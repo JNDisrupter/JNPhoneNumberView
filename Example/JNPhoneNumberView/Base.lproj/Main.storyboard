@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eCu-1g-ZdC">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="Svl-sV-ZVJ">
+            <objects>
+                <tableViewController id="5XG-gY-Ow2" customClass="MainViewController" customModule="JNPhoneNumberView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jzL-Xc-qki">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="gID-Vw-O0H">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Uyp-7J-kMR" style="IBUITableViewCellStyleDefault" id="K17-MX-KRu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K17-MX-KRu" id="9a8-h4-8vk">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Phone Number View Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uyp-7J-kMR">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vXZ-lx-hvc" kind="show" id="u0M-wm-gNB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qxL-Ms-2Dx" style="IBUITableViewCellStyleDefault" id="lBi-cj-s44">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lBi-cj-s44" id="IcV-DF-kwZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Country Picker Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxL-Ms-2Dx">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="FHn-IP-tsM" kind="show" id="BOL-Zw-zOK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="5XG-gY-Ow2" id="fwp-fS-qMu"/>
+                            <outlet property="delegate" destination="5XG-gY-Ow2" id="KxQ-bs-rkp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1FW-Mz-60j"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBh-78-UQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="130"/>
+        </scene>
+        <!--Phone Number View Example-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="JNPhoneNumberViewExample" customModule="JNPhoneNumberView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeM-id-K8s" customClass="JNPhoneNumberView" customModule="JNPhoneNumberView">
+                                <rect key="frame" x="50" y="208.5" width="275" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="h1k-V0-C6b"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="International Phone Number:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awU-qD-C7K">
+                                <rect key="frame" x="78" y="278.5" width="219" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="awU-qD-C7K" firstAttribute="top" secondItem="BeM-id-K8s" secondAttribute="bottom" constant="20" id="Tmt-bg-5AB"/>
+                            <constraint firstAttribute="trailing" secondItem="BeM-id-K8s" secondAttribute="trailing" constant="50" id="Y1U-m4-hzm"/>
+                            <constraint firstItem="BeM-id-K8s" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-100" id="gH3-Ui-Oj0"/>
+                            <constraint firstItem="BeM-id-K8s" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="50" id="oKf-23-ill"/>
+                            <constraint firstItem="BeM-id-K8s" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xz7-5F-Mb9"/>
+                            <constraint firstItem="awU-qD-C7K" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="zxC-2d-lw2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="phoneNumberLabel" destination="awU-qD-C7K" id="Ono-mG-gHq"/>
+                        <outlet property="phoneNumberView" destination="BeM-id-K8s" id="w6M-DP-MUH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="-182"/>
+        </scene>
+        <!--Country Picker Example-->
+        <scene sceneID="yvb-Ob-DhU">
+            <objects>
+                <viewController id="FHn-IP-tsM" customClass="JNCountryPickerExample" customModule="JNPhoneNumberView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Os8-Bm-cj0"/>
+                        <viewControllerLayoutGuide type="bottom" id="cxT-pV-EL4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FZw-rM-Cbm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQf-zl-RAQ">
+                                <rect key="frame" x="136.5" y="114" width="102" height="30"/>
+                                <state key="normal" title="Select Country"/>
+                                <connections>
+                                    <action selector="didClickSelectCountryButton" destination="FHn-IP-tsM" eventType="touchUpInside" id="4ls-V2-2GM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-C8-wy2">
+                                <rect key="frame" x="20" y="194" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5QU-C8-wy2" firstAttribute="top" secondItem="EQf-zl-RAQ" secondAttribute="bottom" constant="50" id="LUB-7N-AQ0"/>
+                            <constraint firstAttribute="trailing" secondItem="5QU-C8-wy2" secondAttribute="trailing" constant="20" id="MI2-eL-VR6"/>
+                            <constraint firstItem="EQf-zl-RAQ" firstAttribute="top" secondItem="Os8-Bm-cj0" secondAttribute="bottom" constant="50" id="Vsk-Hf-yat"/>
+                            <constraint firstItem="EQf-zl-RAQ" firstAttribute="centerX" secondItem="FZw-rM-Cbm" secondAttribute="centerX" id="W3j-kO-zCU"/>
+                            <constraint firstItem="5QU-C8-wy2" firstAttribute="leading" secondItem="FZw-rM-Cbm" secondAttribute="leading" constant="20" id="uWi-pW-b12"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="selectedCountryInfoLabel" destination="5QU-C8-wy2" id="IpB-xb-EAB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3W-LX-XxY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="540"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x4w-i5-cz1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eCu-1g-ZdC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HwS-oD-9Fi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5XG-gY-Ow2" kind="relationship" relationship="rootViewController" id="pBF-dX-aY7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oiC-zI-gxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-642.39999999999998" y="129.98500749625188"/>
+        </scene>
+    </scenes>
+</document>

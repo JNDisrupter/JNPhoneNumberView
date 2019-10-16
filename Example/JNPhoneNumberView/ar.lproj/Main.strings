@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Select Country"; ObjectID = "EQf-zl-RAQ"; */
+"EQf-zl-RAQ.normalTitle" = "Select Country";
+
+/* Class = "UILabel"; text = "Phone Number View Example"; ObjectID = "Uyp-7J-kMR"; */
+"Uyp-7J-kMR.text" = "Phone Number View Example";
+
+/* Class = "UILabel"; text = "International Phone Number:"; ObjectID = "awU-qD-C7K"; */
+"awU-qD-C7K.text" = "International Phone Number:";
+
+/* Class = "UILabel"; text = "Country Picker Example"; ObjectID = "qxL-Ms-2Dx"; */
+"qxL-Ms-2Dx.text" = "Country Picker Example";

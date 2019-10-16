@@ -10,11 +10,11 @@ Pod::Spec.new do |s|
   s.name             = 'JNPhoneNumberView'
   s.version          = '0.1.0'
   s.summary          = 'A short description of JNPhoneNumberView.'
-  s.description      = ""
+  s.description      = "Test"
   s.homepage         = "https://github.com/JNDisrupter"
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { "Jayel Zaghmoutt" => "eng.jayel.z@gmail.com", "hamzakhanfar' => 'ha.khanfer@gmail.com" }
+  s.author           = { "Jayel Zaghmoutt" => "eng.jayel.z@gmail.com", "hamzakhanfar" => "ha.khanfer@gmail.com" }
   s.source           = { :git => 'https://github.com/hamzakhanfar/JNPhoneNumberView.git', :tag => s.version.to_s }
   s.ios.deployment_target       = '9.0'
   s.swift_version               = '5.0'

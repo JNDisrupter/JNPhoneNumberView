@@ -36,7 +36,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WH4-Oy-Cah"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             <connections>
                                 <action selector="textFieldDidChangeText:" destination="-1" eventType="editingChanged" id="mpT-Rk-Y9e"/>
                             </connections>

@@ -29,7 +29,7 @@ class JNPhoneNumberViewExample: UIViewController {
         self.phoneNumberView.delegate = self
         self.phoneNumberView.setDefaultCountryCode("PS")
         self.phoneNumberView.backgroundColor = UIColor.gray
-        self.phoneNumberView.setViewAttributes(JNPhoneNumberViewConfiguration())
+        self.phoneNumberView.setViewConfiguration(JNPhoneNumberViewConfiguration())
         self.phoneNumberView.setPhoneNumber("123123123")
     }
     
@@ -49,9 +49,13 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      Get country code picker attributes
      */
     func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration {
-        let configiration = JNCountryPickerConfiguration()
-        configiration.pickerLanguage = .ar
-        return configiration
+        let configuration = JNCountryPickerConfiguration()
+        configuration.pickerLanguage = .en
+        configuration.tableCellInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        configuration.viewBackgroundColor = UIColor.lightGray
+        configuration.tableCellBackgroundColor = UIColor.white
+        
+        return configuration
     }
     
     /**
@@ -61,6 +65,11 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      */
     func phoneNumberView(didChangeText text: String) {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text)"
+        
+        let configration =  JNPhoneNumberViewConfiguration()
+        configration.phoneNumberTitleColor = UIColor.black
+        
+        self.phoneNumberView.setViewConfiguration(configration)
     }
     
     /**
@@ -73,6 +82,9 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text) \n \(validationMessage)"
         
         self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
+        let configration =  JNPhoneNumberViewConfiguration()
+        configration.phoneNumberTitleColor = isValidPhoneNumber ? UIColor.green : UIColor.red
+        self.phoneNumberView.setViewConfiguration(configration)
     }
 }
 

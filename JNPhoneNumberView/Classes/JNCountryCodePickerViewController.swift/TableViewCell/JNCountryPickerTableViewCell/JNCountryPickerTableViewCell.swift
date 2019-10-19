@@ -8,8 +8,8 @@
 
 import UIKit
 
-// JN Country TableView Cell
-class JNCountryTableViewCell: HarriRoundedTableViewCell {
+// JN Country Picker TableView Cell
+class JNCountryPickerTableViewCell: HarriRoundedTableViewCell {
     
     /// Country name label
     @IBOutlet private weak var countryNameLabel: UILabel!
@@ -40,19 +40,22 @@ class JNCountryTableViewCell: HarriRoundedTableViewCell {
 
         // Set Selection Style
         self.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        // Set container view background color
-        self.containerView.backgroundColor = UIColor.white
+
     }
     
     /**
      Setup
      - Parameter representable: The header representable object
      - Parameter containerViewInsets: Container View Insets
+     - Parameter cornerRadious: Corner radious as CGFLoat
+     - Parameter containerViewBackgroundColor: Container View BackgroundColor as UIColor.
      */
-    func setup(representable: JNCountryPickerTableViewCellRepresentable, containerViewInsets: UIEdgeInsets = UIEdgeInsets.init(top: 12, left: 10, bottom: 0, right: 10)) {
+    func setup(representable: JNCountryPickerTableViewCellRepresentable, containerViewInsets: UIEdgeInsets, cornerRadious: CGFloat, containerViewBackgroundColor: UIColor) {
         
-        super.setup(borderWidth: 0, borderColor: UIColor.clear, cornerRadious: 4.0, isFirst: true, isLast: true)
+        super.setup(borderWidth: 0, borderColor: UIColor.clear, cornerRadious: cornerRadious, isFirst: true, isLast: true)
+        
+        // Set Background Color
+        self.containerView.backgroundColor = containerViewBackgroundColor
         
         // Set title label
         self.countryNameLabel.attributedText = representable.countryNameAttributedString
@@ -61,7 +64,7 @@ class JNCountryTableViewCell: HarriRoundedTableViewCell {
         self.flagLabel.attributedText = representable.flagAttributedString
         
         // Bundle
-        let bundle = Bundle(for: JNCountryTableViewCell.self)
+        let bundle = Bundle(for: JNCountryPickerTableViewCell.self)
         
         // Image name
         let imageName =  representable.isSelected ? "selectedPickerImage" : "unSelectedPickerImage"
@@ -81,7 +84,7 @@ class JNCountryTableViewCell: HarriRoundedTableViewCell {
      - Returns: Cell reuse identifier
      */
     class func getReuseIdentifier() -> String {
-        return "CountryPickerTableViewCell"
+        return "JNCountryPickerTableViewCell"
     }
     
     /**
@@ -97,8 +100,8 @@ class JNCountryTableViewCell: HarriRoundedTableViewCell {
      - Parameter tableView : The table view to register the cell in it
      */
     class func registerCell(in tableView: UITableView) {
-        let bundle = Bundle(for: JNCountryTableViewCell.self)
-        let nib = UINib(nibName: "CountryPickerTableViewCell", bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: JNCountryTableViewCell.getReuseIdentifier())
+        let bundle = Bundle(for: JNCountryPickerTableViewCell.self)
+        let nib = UINib(nibName: "JNCountryPickerTableViewCell", bundle: bundle)
+        tableView.register(nib, forCellReuseIdentifier: JNCountryPickerTableViewCell.getReuseIdentifier())
     }
 }

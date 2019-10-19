@@ -77,6 +77,15 @@ import UIKit
     /// Picker language
     @objc public var pickerLanguage: JNCountryPickerLanguage
     
+    /// Table cell insets
+    @objc public var tableCellInsets: UIEdgeInsets
+    
+    /// Table cell corner raduis
+    @objc public var tableCellCornerRaduis: CGFloat
+    
+    /// Table cell background color
+    @objc public var tableCellBackgroundColor: UIColor
+    
     /**
      Initializer
      */
@@ -96,7 +105,10 @@ import UIKit
         self.navigationBarTitle = "Select Country"
         self.emptySearchMessage = "No Results"
         self.emptySearchImage = UIImage(named: "EmptySearchResult", in: Bundle(for: JNCountryPickerViewController.self), compatibleWith: nil)!
-        self.viewBackgroundColor = UIColor.gray
+        self.viewBackgroundColor = UIColor.white
         self.pickerLanguage = .en
+        self.tableCellInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableCellCornerRaduis = 0.0
+        self.tableCellBackgroundColor = UIColor.white
     }
 }

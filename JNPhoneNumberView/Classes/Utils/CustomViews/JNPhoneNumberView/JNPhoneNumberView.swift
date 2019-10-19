@@ -26,14 +26,17 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     /// Default country
     private var selectedCountry: JNCountry!
     
-    /// View Attributes
-    private var viewAttibutes: JNPhoneNumberViewConfiguration! {
+    /// Left toolbar bar button item
+    private var leftToolbarBarButtonItem: UIBarButtonItem!
+    
+    /// Configuration
+    private var configuration: JNPhoneNumberViewConfiguration! {
         didSet {
             
             // setup views
             self.setupTextField()
             self.setupCountyCodeButton()
-            self.addDoneToolbar()
+            self.leftToolbarBarButtonItem.title = self.configuration.leftToolBarBarButtonItemTitle
         }
     }
     
@@ -76,8 +79,11 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             self.selectedCountry = CountryUtil.generateDialCode(for: "US")
         }
         
+        // Setup toolbar
+        self.setupToolbar()
+        
         // init attributes
-        self.viewAttibutes = JNPhoneNumberViewConfiguration()
+        self.configuration = JNPhoneNumberViewConfiguration()
     }
     
     // MARK: - Setters
@@ -96,13 +102,13 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     }
     
     /**
-     Set view attributes
-     - Parameters viewAttributes: view configuration as JNPhoneNumberViewConfiguration
+     Set view configuration
+     - Parameters configuration: view configuration as JNPhoneNumberViewConfiguration
      */
-    @objc public func setViewAttributes(_ attributes: JNPhoneNumberViewConfiguration) {
+    @objc public func setViewConfiguration(_ configuration: JNPhoneNumberViewConfiguration) {
         
-        // Set attributes
-        self.viewAttibutes = attributes
+        // Set configuration
+        self.configuration = configuration
     }
     
     /**
@@ -166,7 +172,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             let flag = CountryUtil.generateFlag(from: countryCode.code)
             
             // Set button title
-            self.countryCodeButton.setAttributedTitle(NSAttributedString(string: flag + " " + countryCode.dialCode , attributes: [NSAttributedString.Key.font : self.viewAttibutes.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.viewAttibutes.countryDialCodeTitleColor]), for: .normal)
+            self.countryCodeButton.setAttributedTitle(NSAttributedString(string: flag + " " + countryCode.dialCode , attributes: [NSAttributedString.Key.font : self.configuration.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor]), for: .normal)
         }
     }
     
@@ -182,13 +188,13 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         self.textField.keyboardType = .numberPad
         
         // Set font
-        self.textField.font = self.viewAttibutes.phoneNumberTitleFont
+        self.textField.font = self.configuration.phoneNumberTitleFont
         
         // Set color
-        self.textField.textColor = self.viewAttibutes.phoneNumberTitleColor
+        self.textField.textColor = self.configuration.phoneNumberTitleColor
         
         // Set place holder
-        self.textField.placeholder = self.viewAttibutes.phoneNumberPlaceHolder
+        self.textField.placeholder = self.configuration.phoneNumberPlaceHolder
     }
     
     /**
@@ -209,9 +215,9 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     // MARK: - Toolbar and its action
     
     /**
-     Add Done Toolbar
+     Setup Toolbar
      */
-    private func addDoneToolbar() {
+    private func setupToolbar() {
         
         // Init ToolBar
         let toolbar: UIToolbar = UIToolbar()
@@ -219,9 +225,9 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         toolbar.tintColor = UIColor.black
         
         // Adding Done Button ToolBar
-        let doneButton = UIBarButtonItem(title: self.viewAttibutes.doneButtonTitle.capitalized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickDone))
+        self.leftToolbarBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickDone))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        toolbar.items = [spaceButton, doneButton]
+        toolbar.items = [spaceButton, self.leftToolbarBarButtonItem]
         toolbar.sizeToFit()
         
         self.textField.inputAccessoryView = toolbar
@@ -371,18 +377,24 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
     /**
      Get country code list
      - Parameter completion: completion block
+     - Parameter errorCompletion
      */
-    public func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void) {
+    public func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void) {
         
         // Data source delegate
         if let dataSourceDelegate = self.dataSourceDelegate {
             
             // Call phone view data source delegate
-            dataSourceDelegate.phoneNumberViewDataSourceGetCountryList(completion: { countryList in
+            dataSourceDelegate.countryPickerViewControllerLoadCountryList(completion: { countryList in
                 
                 // Call completion
                 completion(countryList)
-            })
+                
+            }) { error in
+                
+                // Call error completion
+                errorCompletion(error)
+            }
         } else {
             
             // Call completion with empty list
@@ -424,7 +436,9 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
 @objc public protocol JNPhoneNumberViewDataSourceDelegate: NSObjectProtocol {
     
     /**
-     Get country code listO
+     Load country list
+     - Parameter completion: completion block
+     - Parameter errorCompletion: errorCompletion
      */
-    func phoneNumberViewDataSourceGetCountryList(completion: ([JNCountry]) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void)
 }

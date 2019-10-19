@@ -12,6 +12,7 @@ import UIKit
 enum GeneralResourceType  {
     case loading
     case emptyDataWithImage
+    case emptyDataOnly
 }
 
 /// General Resource

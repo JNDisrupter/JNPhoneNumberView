@@ -139,10 +139,10 @@ class JNCountryPickerViewModel {
             
             // Select new representable
             itemRepresentable.setSelected(true)
+            
+            // Set selected index
+            self.selectedCountryIndex = itemRepresentable.itemDataIndex
         }
-        
-        // Set selected index
-        self.selectedCountryIndex = indexPath.row
     }
     
     /**

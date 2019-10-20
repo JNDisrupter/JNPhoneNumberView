@@ -37,6 +37,9 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             self.setupTextField()
             self.setupCountyCodeButton()
             self.leftToolbarBarButtonItem.title = self.configuration.leftToolBarBarButtonItemTitle
+            
+            // Set background color
+            self.backgroundColor = self.configuration.viewBackgroundColor
         }
     }
     
@@ -58,6 +61,20 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         
         // Common init
         self.commonInit()
+    }
+    
+    /**
+     Resgin first responder
+     */
+    public override func resignFirstResponder() -> Bool {
+        return self.textField.resignFirstResponder()
+    }
+    
+    /**
+     Become first responder
+     */
+    public override func becomeFirstResponder() -> Bool {
+        return self.textField.becomeFirstResponder()
     }
     
     /**
@@ -347,7 +364,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
      Get Phone Number
      - Returns: phoneNumber as string
      */
-    func getPhoneNumber() -> String {
+    @objc public func getPhoneNumber() -> String {
         
         // Return phone number
         return self.selectedCountry.dialCode+(self.textField.text ?? "")
@@ -379,7 +396,7 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
      - Parameter completion: completion block
      - Parameter errorCompletion
      */
-    public func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void) {
+    public func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void) {
         
         // Data source delegate
         if let dataSourceDelegate = self.dataSourceDelegate {
@@ -440,5 +457,5 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
      - Parameter completion: completion block
      - Parameter errorCompletion: errorCompletion
      */
-    @objc func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
 }

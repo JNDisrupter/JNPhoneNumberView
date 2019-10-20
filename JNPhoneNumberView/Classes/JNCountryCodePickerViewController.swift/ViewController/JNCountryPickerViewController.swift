@@ -244,6 +244,9 @@ import UIKit
             // Country codes and reload data
             weakSelf.viewModel.setCountryList(countryList, selectedCountry: weakSelf.selectedCountry)
             weakSelf.tableView.reloadData()
+            
+            // Enable search bar
+            self?.searchBar.isUserInteractionEnabled = true
         }
     }
     
@@ -251,6 +254,9 @@ import UIKit
      Load Data
      */
     private func loadData() {
+        
+        // Disbale search bar
+        self.searchBar.isUserInteractionEnabled = false
         
         // Check if data source is available
         if let dataSourceDelegate = self.dataSourceDelegate {
@@ -267,6 +273,12 @@ import UIKit
                     
                     // Set country code to view model
                     self?.viewModel.setCountryList(countryList, selectedCountry: self?.selectedCountry)
+                    
+                    // Reload table view
+                    self?.tableView.reloadData()
+                    
+                    // Enable search bar
+                    self?.searchBar.isUserInteractionEnabled = true
                 }
                 
                 // End refreshing
@@ -342,5 +354,5 @@ import UIKit
      - Parameter completion: completion block
      - Parameter errorCompletion: errorCompletion
      */
-    @objc func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
 }

@@ -31,7 +31,7 @@
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad2-b7-iqK">
                             <rect key="frame" x="51" y="0.0" width="367" height="54"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WH4-Oy-Cah"/>
                             </constraints>
@@ -43,6 +43,7 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74j-4f-tqX">
                             <rect key="frame" x="10" y="0.0" width="30" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="123"/>
                             <connections>
                                 <action selector="didClickAreaCodeSelectionButton:" destination="-1" eventType="touchUpInside" id="b4a-ri-fQh"/>
@@ -56,7 +57,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="3AS-Jn-kiH" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" constant="2" id="4Ts-xS-rat"/>
                         <constraint firstItem="ad2-b7-iqK" firstAttribute="left" secondItem="3AS-Jn-kiH" secondAttribute="right" constant="5" id="H77-22-Pdz"/>
@@ -71,7 +72,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="vpz-5k-MUF" secondAttribute="bottom" id="5Z7-ff-CSp"/>
                 <constraint firstItem="vpz-5k-MUF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7ff-ID-gfp"/>

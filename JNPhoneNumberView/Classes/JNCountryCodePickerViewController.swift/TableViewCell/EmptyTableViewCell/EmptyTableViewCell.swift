@@ -112,7 +112,7 @@ class EmptyTableViewCell: UITableViewCell {
         self.selectionStyle = UITableViewCell.SelectionStyle.none
         
         // Set Background Color
-        self.containerView.backgroundColor = UIColor.red
+        self.containerView.backgroundColor = UIColor.clear
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
     }

@@ -56,6 +56,18 @@ used to to show the country dial code and the phone number, you can click on the
     ```swift
     func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
     ```
+- #### View Customization:
+    We provide appearence customization using **JNPhoneNumberViewConfiguration** that has the following attributtes:
+    
+     - ***countryDialCodeTitleColor*** Color for country dial code.
+     - ***countryDialCodeTitleFont:*** Font for country dial code.    
+     - ***phoneNumberTitleColor:*** Color for phone number textfield.
+     - ***phoneNumberTitleFont:*** Font for phone number textfield.
+     - ***phoneNumberPlaceHolder:*** Place hodler for phone number textfield.
+     - ***leftToolBarBarButtonItemTitle:*** Title for Tool BarBar ButtonItem that appear of Keyboard.
+     - ***viewBackgroundColor:*** Container background color
+        
+    
 
 #### Public Methods:
 1. setDefaultCountryCode(_ defaultCountryCode: String): you can set a default country using this method, you just have to pass a country code such as "US", "PS".

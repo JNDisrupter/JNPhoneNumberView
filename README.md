@@ -45,34 +45,30 @@ pod 'JNPhoneNumberView'
 
 3. Implement JNPhoneNumberViewDelegate in your view controller and set delegate like the following:
 
-```swift
-
-/**
-Get presenter view controller
-- Returns: presenter view controller
-*/
-func phoneNumberViewGetPresenterViewController() -> UIViewController
-
-/**
-Get country picker configuration
-*/
-func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
-
-/**
-Did change text
-- Parameter text: New text.
-- Parameter cellIndex: Cell index
-*/
-func phoneNumberView(didChangeText text: String)
-
-/**
-Did end editing
-- Parameter text: New text.
-- Parameter isValidPhoneNumber: Is valid phone number flag as bool
-*/
-func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
-
-```
+    - Presenter View Controller to be used for presenting the Country list picker:
+        ```swift
+        func phoneNumberViewGetPresenterViewController() -> UIViewController
+        ```
+        
+     - Get Country picker configuration:
+        ```swift
+        func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
+        ```
+    
+     -  Did change text:
+        ```swift
+        func phoneNumberView(didChangeText text: String)
+        ``` 
+     
+     -  Did end Editing with bool value indicate if the phone number is valid:
+        ```swift
+        func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
+        ``` 
+        
+     -  Selected Country did changed with bool value indicate if the phone number is valid:
+        ```swift
+        func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool)
+        ``` 
 
 4. Implement JNPhoneNumberViewDataSourceDelegate in your view controller and set delegate if you want to provide a source with custom countries instead of using the local like the following:
 

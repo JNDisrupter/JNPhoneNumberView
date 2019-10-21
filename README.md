@@ -5,11 +5,65 @@
 [![License](https://img.shields.io/cocoapods/l/JNPhoneNumberView.svg?style=flat)](https://cocoapods.org/pods/JNPhoneNumberView)
 [![Platform](https://img.shields.io/cocoapods/p/JNPhoneNumberView.svg?style=flat)](https://cocoapods.org/pods/JNPhoneNumberView)
 
-**JNPhoneNumberView** used to to show the country dial code and the phone number, you can click on the dial code and select another country from the countries picker, this view has a delegate methods to pass the international number and validity of it.
+## JNPhoneNumberView
+
+used to to show the country dial code and the phone number, you can click on the dial code and select another country from the countries picker, this view has a delegate methods to pass the international number and validity of it.
 
 ### Screenshots
 <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot2.png" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber1.gif" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber2.gif" width="200" height="400"/>
 
+### Usage
+
+- #### To add JNPhoneNumberView in interface builder:
+
+    1. Drag an UIView and change the class to "JNPhoneNumberView"
+
+    2. Add refrence for it in the view controller.
+
+- #### Implement JNPhoneNumberViewDelegate:
+
+     Set the 'delegate' in your view controller and implement the following methods:
+        
+     - Presenter View Controller to be used for presenting the Country list picker:
+        
+          ```swift
+          func phoneNumberViewGetPresenterViewController() -> UIViewController
+          ```
+        
+     - Get Country picker configuration:
+        ```swift
+        func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
+        ```
+    
+     -  Did change text:
+        ```swift
+        func phoneNumberView(didChangeText text: String)
+        ``` 
+     
+     -  Did end Editing with bool value indicate if the phone number is valid:
+        ```swift
+        func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
+        ``` 
+        
+     -  Selected Country did changed with bool value indicate if the phone number is valid:
+        ```swift
+        func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool)
+        ``` 
+
+- #### Implement JNPhoneNumberViewDataSourceDelegate:
+    Set dataSourceDelegate in your view controller if you want to provide a source with custom countries instead of using the our like the following:
+
+    ```swift
+    func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
+    ```
+
+#### Public Methods:
+1. setDefaultCountryCode(_ defaultCountryCode: String): you can set a default country using this method, you just have to pass a country code such as "US", "PS".
+2. public func setupViewAttributes(_ attributes: JNPhoneNumberViewAttributes) : with this method you can pass a custom attributes.
+
+#### Public Properties:
+1. delegate : Picker Delegate
+2. dataSourceDelegate: Data Source Delegate
 **JNCountryPickerViewController** used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry object, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
 
 ### Screenshots
@@ -34,60 +88,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'JNPhoneNumberView'
 ```
-
-## JNPhoneNumberView Usage
-
-#### To add JNPhoneNumberView in interface builder:
-
-1. Drag an UIView and change the class to "JNPhoneNumberView"
-
-2. Add refrence for it in the view controller.
-
-3. Implement JNPhoneNumberViewDelegate in your view controller and set delegate like the following:
-
-    - Presenter View Controller to be used for presenting the Country list picker:
-        ```swift
-        func phoneNumberViewGetPresenterViewController() -> UIViewController
-        ```
-        
-     - Get Country picker configuration:
-        ```swift
-        func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
-        ```
-    
-     -  Did change text:
-        ```swift
-        func phoneNumberView(didChangeText text: String)
-        ``` 
-     
-     -  Did end Editing with bool value indicate if the phone number is valid:
-        ```swift
-        func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
-        ``` 
-        
-     -  Selected Country did changed with bool value indicate if the phone number is valid:
-        ```swift
-        func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool)
-        ``` 
-
-4. Implement JNPhoneNumberViewDataSourceDelegate in your view controller and set delegate if you want to provide a source with custom countries instead of using the local like the following:
-
-```swift
-
-/**
-Get country code list
-*/
-func phoneNumberViewDataSourceGetCountryList(completion: ([JNCountry]) -> Void)
-
-```
-
-#### Public Methods:
-1. setDefaultCountryCode(_ defaultCountryCode: String): you can set a default country using this method, you just have to pass a country code such as "US", "PS".
-2. public func setupViewAttributes(_ attributes: JNPhoneNumberViewAttributes) : with this method you can pass a custom attributes.
-
-#### Public Properties:
-1. delegate : Picker Delegate
-2. dataSourceDelegate: Data Source Delegate
 
 ## JNCountryPickerViewController Usage
 

@@ -8,16 +8,16 @@
 **JNPhoneNumberView** used to to show the country dial code and the phone number, you can click on the dial code and select another country from the countries picker, this view has a delegate methods to pass the international number and validity of it.
 
 ### Screenshots
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/screenshot1.png)
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/phonenumber1.gif)
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/phonenumber2.gif)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber1.gif)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber2.gif)
 
 **JNCountryPickerViewController** used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry object, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
 
 ### Screenshots
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/screenshot2.png)
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/countrypicker1.gif)
-![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/development/Images/countrypicker2.gif)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot2.png)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif)
+![ScreenShot1](https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif)
 
 ## Example
 

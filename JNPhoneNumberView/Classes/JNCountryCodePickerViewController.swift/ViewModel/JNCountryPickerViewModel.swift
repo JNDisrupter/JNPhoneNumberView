@@ -91,10 +91,16 @@ class JNCountryPickerViewModel {
         
         // Check mode if search or normal
         if self.searchText.isEmpty {
-            return self.countryRepresentables[indexPath.row]
+            if self.countryRepresentables.count > indexPath.row {
+                return self.countryRepresentables[indexPath.row]
+            }
         } else {
-            return self.filteredCountryRepresentables[indexPath.row]
+            if self.filteredCountryRepresentables.count > indexPath.row {
+                return self.filteredCountryRepresentables[indexPath.row]
+            }
         }
+        
+        return nil
     }
     
     /**
@@ -128,7 +134,7 @@ class JNCountryPickerViewModel {
     func setSelected(indexPath: IndexPath) {
         
         // Get Item Representable at index path
-        if let selectedCountryIndex = self.selectedCountryIndex, let previousSelectedItemRepresentable = self.representableForRow(at: IndexPath(row: selectedCountryIndex, section: 0)) as? JNCountryPickerTableViewCellRepresentable {
+        if let selectedCountryIndex = self.selectedCountryIndex, let previousSelectedItemRepresentable = self.countryRepresentables[selectedCountryIndex] as? JNCountryPickerTableViewCellRepresentable {
             
             // Un select previous one
             previousSelectedItemRepresentable.setSelected(false)

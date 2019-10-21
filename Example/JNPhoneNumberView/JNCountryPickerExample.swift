@@ -13,6 +13,9 @@ class JNCountryPickerExample: UIViewController, JNCountryPickerViewControllerDel
 
     
     @IBOutlet private weak var selectedCountryInfoLabel: UILabel!
+   
+    /// selected country
+    var selectedCountry: JNCountry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +27,16 @@ class JNCountryPickerExample: UIViewController, JNCountryPickerViewControllerDel
     @IBAction private func didClickSelectCountryButton() {
         
         let configuration = JNCountryPickerConfiguration()
-        configuration.pickerLanguage = .ar
+        configuration.pickerLanguage = .en
         configuration.tableCellInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        configuration.tableCellCornerRaduis = 5.0
         configuration.viewBackgroundColor = UIColor.lightGray
         configuration.tableCellBackgroundColor = UIColor.white
         
         // Init
         let countryPickerViewController = JNCountryPickerViewController()
         countryPickerViewController.pickerConfiguration = configuration
+        countryPickerViewController.selectedCountry = self.selectedCountry
         countryPickerViewController.delegate = self
         countryPickerViewController.dataSourceDelegate = self
         let nevigationController = UINavigationController(rootViewController: countryPickerViewController)
@@ -44,10 +49,13 @@ class JNCountryPickerExample: UIViewController, JNCountryPickerViewControllerDel
      */
     func countryPickerViewController(didSelectCountry country: JNCountry) {
         
+        // update Selected Country
+        self.selectedCountry = country
+        
         self.selectedCountryInfoLabel.text = " Country Name: \(country.name) \n Country Dial Code: \(country.dialCode)  \n Country Code: \(country.code)"
     }
     
     func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void) {
-        errorCompletion(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Error"]))
+        completion([])
     }
 }

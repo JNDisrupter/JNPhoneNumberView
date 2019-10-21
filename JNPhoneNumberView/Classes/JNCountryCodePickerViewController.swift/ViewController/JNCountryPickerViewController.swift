@@ -19,7 +19,7 @@ import UIKit
     @IBOutlet private(set) weak var tableView: UITableView!
     
     /// selected country
-    @objc var selectedCountry: JNCountry?
+    @objc public var selectedCountry: JNCountry?
     
     /// country list
     private var countryList: [JNCountry] = []
@@ -147,6 +147,8 @@ import UIKit
         
         // Set search bar delegate
         self.searchBar.delegate = self
+        self.searchBar.barTintColor = self.pickerConfiguration.searchBarTintColor
+        self.searchBar.backgroundImage = UIImage() 
     }
     
     /**

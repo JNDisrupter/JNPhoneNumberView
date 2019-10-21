@@ -24,13 +24,13 @@ class JNPhoneNumberViewExample: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "JN Phone Number View Example"
-
+        
         // Set delegate
         self.phoneNumberView.delegate = self
-        self.phoneNumberView.setDefaultCountryCode("PS")
+        self.phoneNumberView.setDefaultCountryCode("US")
         self.phoneNumberView.backgroundColor = UIColor.gray
         self.phoneNumberView.setViewConfiguration(JNPhoneNumberViewConfiguration())
-        self.phoneNumberView.setPhoneNumber("123123123")
+        self.phoneNumberView.setPhoneNumber("")
     }
     
 }
@@ -82,9 +82,18 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text) \n \(validationMessage)"
         
         self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
-        let configration =  JNPhoneNumberViewConfiguration()
-        configration.phoneNumberTitleColor = isValidPhoneNumber ? UIColor.green : UIColor.red
-        self.phoneNumberView.setViewConfiguration(configration)
+    }
+    
+    /**
+     Country Did Changed
+     - Parameter country: New Selected Country
+     - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     */
+    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool) {
+        let validationMessage = isValidPhoneNumber ? "Valid Phone Number" : "Invalid Phone Number"
+        self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getPhoneNumber()) \n \(validationMessage)"
+        
+        self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
     }
 }
 

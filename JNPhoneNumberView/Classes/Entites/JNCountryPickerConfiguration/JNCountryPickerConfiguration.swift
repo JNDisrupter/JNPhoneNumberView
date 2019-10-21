@@ -50,6 +50,9 @@ import UIKit
     /// Empty search message color
     @objc public var emptySearchMessageColor: UIColor
     
+    /// Search bar tint Color
+    @objc public var searchBarTintColor: UIColor
+    
     /// Navigation Bar color
     @objc public var navigationBarColor: UIColor
     
@@ -95,6 +98,7 @@ import UIKit
         self.selectedTitleFont = UIFont.systemFont(ofSize: 15.0)
         self.titleFont = UIFont.systemFont(ofSize: 15.0)
         self.emptySearchMessageFont = UIFont.systemFont(ofSize: 15.0)
+        self.searchBarTintColor = UIColor.lightGray
         self.selectedTitleColor = UIColor.black
         self.titleColor = UIColor.black
         self.emptySearchMessageColor = UIColor.black

@@ -23,14 +23,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="428" height="54"/>
+            <rect key="frame" x="0.0" y="0.0" width="462" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpz-5k-MUF">
-                    <rect key="frame" x="0.0" y="0.0" width="428" height="54"/>
+                    <rect key="frame" x="0.0" y="0.0" width="462" height="240"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad2-b7-iqK">
-                            <rect key="frame" x="51" y="0.0" width="367" height="54"/>
+                            <rect key="frame" x="51" y="0.0" width="401" height="240"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WH4-Oy-Cah"/>
@@ -42,15 +42,14 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74j-4f-tqX">
-                            <rect key="frame" x="10" y="0.0" width="30" height="54"/>
+                            <rect key="frame" x="10" y="0.0" width="30" height="240"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="123"/>
                             <connections>
                                 <action selector="didClickAreaCodeSelectionButton:" destination="-1" eventType="touchUpInside" id="b4a-ri-fQh"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AS-Jn-kiH">
-                            <rect key="frame" x="45" y="2" width="1" height="50"/>
+                            <rect key="frame" x="45" y="2" width="1" height="236"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="3Y3-eC-COq"/>
@@ -59,15 +58,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="3AS-Jn-kiH" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" constant="2" id="4Ts-xS-rat"/>
                         <constraint firstItem="ad2-b7-iqK" firstAttribute="left" secondItem="3AS-Jn-kiH" secondAttribute="right" constant="5" id="H77-22-Pdz"/>
+                        <constraint firstItem="3AS-Jn-kiH" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" constant="2" id="I9V-67-bG5"/>
+                        <constraint firstAttribute="bottom" secondItem="3AS-Jn-kiH" secondAttribute="bottom" constant="2" id="IED-Xg-qij"/>
                         <constraint firstAttribute="right" secondItem="ad2-b7-iqK" secondAttribute="right" constant="10" id="Rdj-kN-CG5"/>
                         <constraint firstItem="74j-4f-tqX" firstAttribute="left" secondItem="vpz-5k-MUF" secondAttribute="left" constant="10" id="RfX-zZ-2zR"/>
                         <constraint firstAttribute="bottom" secondItem="74j-4f-tqX" secondAttribute="bottom" id="WQB-AU-D9T"/>
                         <constraint firstItem="ad2-b7-iqK" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" id="d8b-ol-53U"/>
                         <constraint firstItem="3AS-Jn-kiH" firstAttribute="left" secondItem="74j-4f-tqX" secondAttribute="right" constant="5" id="eRD-4P-hNH"/>
                         <constraint firstAttribute="bottom" secondItem="ad2-b7-iqK" secondAttribute="bottom" id="gaV-7F-YxH"/>
-                        <constraint firstAttribute="bottom" secondItem="3AS-Jn-kiH" secondAttribute="bottom" constant="2" id="hSH-fu-ImU"/>
                         <constraint firstItem="74j-4f-tqX" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" id="omQ-Lo-uqb"/>
                     </constraints>
                 </view>
@@ -81,7 +80,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="153.62318840579712" y="-222.32142857142856"/>
+            <point key="canvasLocation" x="178.2608695652174" y="-160.04464285714286"/>
         </view>
     </objects>
 </document>

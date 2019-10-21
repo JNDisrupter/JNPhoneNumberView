@@ -29,8 +29,12 @@ class JNPhoneNumberViewExample: UIViewController {
         self.phoneNumberView.delegate = self
         self.phoneNumberView.setDefaultCountryCode("US")
         self.phoneNumberView.backgroundColor = UIColor.gray
-        self.phoneNumberView.setViewConfiguration(JNPhoneNumberViewConfiguration())
+        self.phoneNumberView.setViewConfiguration(self.getConfigration())
         self.phoneNumberView.setPhoneNumber("")
+        self.phoneNumberView.layer.cornerRadius = 5.0
+        self.phoneNumberView.layer.borderColor = UIColor.lightGray.cgColor
+        self.phoneNumberView.layer.borderWidth = 1.0
+        self.phoneNumberView.backgroundColor = UIColor.lightGray
     }
     
 }
@@ -65,11 +69,8 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      */
     func phoneNumberView(didChangeText text: String) {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text)"
-        
-        let configration =  JNPhoneNumberViewConfiguration()
-        configration.phoneNumberTitleColor = UIColor.black
-        
-        self.phoneNumberView.setViewConfiguration(configration)
+    
+        self.phoneNumberView.setViewConfiguration(self.getConfigration())
     }
     
     /**
@@ -94,6 +95,14 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
         self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getPhoneNumber()) \n \(validationMessage)"
         
         self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
+    }
+    
+    private func getConfigration() -> JNPhoneNumberViewConfiguration {
+        let configrartion = JNPhoneNumberViewConfiguration()
+        configrartion.phoneNumberTitleColor = UIColor.white
+        configrartion.countryDialCodeTitleColor = UIColor.white
+        
+        return configrartion
     }
 }
 

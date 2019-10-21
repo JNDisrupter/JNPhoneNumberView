@@ -29,9 +29,6 @@ import UIKit
     /// left ToolBar BarButtonItem Title
     @objc public var leftToolBarBarButtonItemTitle: String
     
-    /// View background color
-    @objc public var viewBackgroundColor: UIColor
-    
     /**
      Initiailzer
      */
@@ -44,6 +41,5 @@ import UIKit
         self.phoneNumberTitleColor = UIColor.black
         self.leftToolBarBarButtonItemTitle = "Done"
         self.phoneNumberPlaceHolder = ""
-        self.viewBackgroundColor = UIColor.clear
     }
 }

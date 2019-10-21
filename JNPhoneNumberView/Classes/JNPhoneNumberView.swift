@@ -37,9 +37,6 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             self.setupTextField()
             self.setupCountyCodeButton()
             self.leftToolbarBarButtonItem.title = self.configuration.leftToolBarBarButtonItemTitle
-            
-            // Set background color
-            self.backgroundColor = self.configuration.viewBackgroundColor
         }
     }
     
@@ -222,11 +219,19 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         // Create nib
         let nib = UINib(nibName: "JNPhoneNumberView", bundle: Bundle(for: JNPhoneNumberView.self))
         
-        // container view
-        let containerView = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        
-        // Add container view as subview
-        self.addSubview(containerView)
+        // View
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            
+            // Add subview
+            self.addSubview(view)
+            
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        }
     }
     
     // MARK: - Toolbar and its action

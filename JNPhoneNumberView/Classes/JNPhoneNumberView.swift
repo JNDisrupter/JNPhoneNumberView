@@ -11,8 +11,11 @@ import UIKit
 /// JN Phone Number View
 public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     
-    /// Country Code Button
-    @IBOutlet private weak var countryCodeButton: UIButton!
+    /// Country code label
+    @IBOutlet private weak var countryCodeLabel: UILabel!
+    
+    /// flag label
+    @IBOutlet private weak var flagLabel: UILabel!
     
     /// Text View
     @IBOutlet private weak var textField: UITextField!
@@ -35,7 +38,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             
             // setup views
             self.setupTextField()
-            self.setupCountyCodeButton()
+            self.setupCountyLabels()
             self.leftToolbarBarButtonItem.title = self.configuration.leftToolBarBarButtonItemTitle
         }
     }
@@ -112,7 +115,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         self.selectedCountry = CountryUtil.generateDialCode(for: defaultCountryCode)
         
         // Setup country code button
-        self.setupCountyCodeButton()
+        self.setupCountyLabels()
     }
     
     /**
@@ -153,7 +156,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
                 self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber.countryCode.description)
                 
                 // Setup country code button
-                self.setupCountyCodeButton()
+                self.setupCountyLabels()
                 
                 // Set phone number
                 self.textField.text = parsedPhoneNumber.nationalNumber.description
@@ -175,9 +178,9 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     // MARK: - Setup
     
     /**
-     Setup default country code
+     Setup default country Labels
      */
-    private func setupCountyCodeButton() {
+    private func setupCountyLabels() {
         
         // Init flag
         if let countryCode = self.selectedCountry {
@@ -185,8 +188,27 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             // Init flag
             let flag = CountryUtil.generateFlag(from: countryCode.code)
             
-            // Set button title
-            self.countryCodeButton.setAttributedTitle(NSAttributedString(string: flag + " " + countryCode.dialCode , attributes: [NSAttributedString.Key.font : self.configuration.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor]), for: .normal)
+            // Build flag attributes
+            var flagAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : self.configuration.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor]
+            
+            // Find font and adjust the font size
+            if let font = flagAttributes[NSAttributedString.Key.font] as? UIFont {
+                
+                // new font
+                let newFont = font.withSize(font.pointSize + 12.0)
+                
+                // set font with new size
+                flagAttributes[NSAttributedString.Key.font] = newFont
+            }
+            
+            // Init flag attributed string
+            let flagAttributedString = NSMutableAttributedString(string: flag, attributes: flagAttributes)
+            
+            let countryCodeAttributedString = NSMutableAttributedString(string: countryCode.dialCode , attributes: [NSAttributedString.Key.font : self.configuration.phoneNumberTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor])
+            
+            // Set titles
+            self.flagLabel.attributedText = flagAttributedString
+            self.countryCodeLabel.attributedText = countryCodeAttributedString
         }
     }
     
@@ -389,7 +411,7 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDelegate {
         self.selectedCountry = country
         
         // Setup country code button
-        self.setupCountyCodeButton()
+        self.setupCountyLabels()
         
         // Call delegate
         self.delegate?.phoneNumberView(countryDidChanged: country, isValidPhoneNumber: self.isValidPhoneNumber())

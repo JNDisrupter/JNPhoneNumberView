@@ -101,6 +101,8 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
         let configrartion = JNPhoneNumberViewConfiguration()
         configrartion.phoneNumberTitleColor = UIColor.white
         configrartion.countryDialCodeTitleColor = UIColor.white
+        configrartion.phoneNumberTitleFont = UIFont.systemFont(ofSize: 18.0)
+        configrartion.countryDialCodeTitleFont = UIFont.systemFont(ofSize: 20.0)
         
         return configrartion
     }

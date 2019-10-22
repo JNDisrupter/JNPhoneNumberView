@@ -5,6 +5,25 @@
 [![License](https://img.shields.io/cocoapods/l/JNPhoneNumberView.svg?style=flat)](https://cocoapods.org/pods/JNPhoneNumberView)
 [![Platform](https://img.shields.io/cocoapods/p/JNPhoneNumberView.svg?style=flat)](https://cocoapods.org/pods/JNPhoneNumberView)
 
+## Requirements
+
+- iOS 9.0+ / macOS 10.10+
+- Xcode 9.0+
+- Swift 4+
+
+
+## Installation
+
+JNPhoneNumberView is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'JNPhoneNumberView'
+```
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 ## JNPhoneNumberView
 
 used to to show the country dial code and the phone number, you can click on the dial code and select another country from the countries picker, this view has a delegate methods to pass the international number and validity of it.
@@ -96,26 +115,6 @@ used to to show the country dial code and the phone number, you can click on the
 
 ### Screenshots
 <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png" width="200" height="400"/>     <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/>    <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif" width="200" height="400"/>
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-- iOS 9.0+ / macOS 10.10+
-- Xcode 9.0+
-- Swift 4+
-
-
-## Installation
-
-JNPhoneNumberView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'JNPhoneNumberView'
-```
 
 ## JNCountryPickerViewController Usage
 

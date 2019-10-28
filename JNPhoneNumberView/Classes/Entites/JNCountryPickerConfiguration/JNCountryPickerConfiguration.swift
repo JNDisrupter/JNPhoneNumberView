@@ -62,6 +62,8 @@ import UIKit
     /// Navigation bar title
     @objc public var navigationBarTitle: String
     
+    @objc public var navigationBarTitleTextAttributes: [NSAttributedString.Key : Any]
+    
     /// Select bar button title
     @objc public var selectBarButtonTitle: String
     
@@ -114,5 +116,6 @@ import UIKit
         self.tableCellInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         self.tableCellCornerRaduis = 0.0
         self.tableCellBackgroundColor = UIColor.white
+        self.navigationBarTitleTextAttributes = [:]
     }
 }

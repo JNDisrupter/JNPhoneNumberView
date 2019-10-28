@@ -111,45 +111,82 @@ used to to show the country dial code and the phone number, you can click on the
 #### Public Properties:
 1. delegate : Picker Delegate
 2. dataSourceDelegate: Data Source Delegate
-**JNCountryPickerViewController** used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry object, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
 
 ### Screenshots
 <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png" width="200" height="400"/>     <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/>    <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif" width="200" height="400"/>
 
-## JNCountryPickerViewController Usage
+## JNCountryPickerViewController
+
+used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
+
+### Screenshots
+<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/> 
+
+### Usage
 
 #### To present JNCountryPickerViewController programmatically:
 
-1. Initiate JNCountryPickerViewController with nib name, the nib name is the same with view controller name.
+1. Initiate JNCountryPickerViewController.
 
-2. Present the view controller modally.
+2. Emped the view controller in navigation controller.
 
-3. Implement JNCountryPickerViewControllerDelegate in your view controller and set delegate like the following:
+3. Present the navigation controller modally.
 
-```swift
+- ####  Implement JNCountryPickerViewControllerDelegate:
 
-/**
-Did Select Country
-- Parameter country: country as JNCountry.
-*/
-func countryPickerViewController(didSelectCountry country: JNCountry)
+    Set the 'delegate' in your view controller and implement the following methods:
+    
+    - Did select Country
+    ```swift
 
-```
-4. Implement JNPhoneNumberViewDataSourceDelegate in your view controller and set delegate if you want to provide a data source with custom countries instead of using the local cached countries like the following:
+    /**
+    Did Select Country
+    - Parameter country: country as JNCountry.
+    */
+    func countryPickerViewController(didSelectCountry country: JNCountry)
+    ```
+    
+- ####  Implement JNPhoneNumberViewDataSourceDelegate:
 
-```swift
+    Set the 'dataSourceDelegate' in your view controller and implement the following methods:
 
-/**
-Load country list
-- Parameter completion: completion block
-*/
-func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void)
+    - Load country list from custom source
+    ```swift
 
-```
+    /**
+    Load country list
+    - Parameter completion: completion block
+    */
+    func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void)
+
+    ```
+    
+- #### View Customization:
+We provide appearance customization using **JNCountryPickerConfiguration** that has the following attributtes:
+     - ***selectedTitleFont*** Selected item title font.
+     - ***titleFont*** Not selected item title font.
+     - ***selectedTitleColor*** Selected item title color.
+     - ***titleColor*** Not selected item title color.
+     - ***emptySearchMessageFont*** Message for empty search result.
+     - ***emptySearchMessageColor*** Color for empty search result message.
+     - ***searchBarTintColor*** Search bar tint color.
+     - ***navigationBarColor*** Navigation bar color.
+     - ***naigationBarTintColor*** Navigation bar tint color.
+     - ***navigationBarTitle*** Navigation bar Title.
+     - ***selectBarButtonTitle*** Select bar button title.
+     - ***loadingAcivityIndicatorColor*** Loading Acivity Indicator Color.
+     - ***emptySearchMessage*** Message for empty search result.
+     - ***emptySearchImage*** Image for empty search result.
+     - ***viewBackgroundColor*** View controller background color.
+     - ***pickerLanguage*** Picker language.
+     - ***tableCellInsets*** Cell margins.
+     - ***tableCellCornerRaduis*** Cell corner raduis.
+     - ***tableCellBackgroundColor*** Cell background color.
+
 #### Public Properties:
 
-1. pickerConfiguration: you can set a custom configuration instead of the default, such as colors, titles and more.
-2. selectedCountry: Selected countryt
+1. pickerConfiguration: you can set a custom configuration instead of the default configuration as dicribed in view customization section.
+2. selectedCountry: you can set country to be selected when picker opened.
 2. delegate : Picker Delegate
 3. dataSourceDelegate: Data Source Delegate
 

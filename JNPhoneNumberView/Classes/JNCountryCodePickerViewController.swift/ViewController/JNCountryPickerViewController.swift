@@ -118,6 +118,7 @@ import UIKit
         // Set naviation bar colors
         self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
         self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
+        self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
         
         // set title
         self.title = self.pickerConfiguration.navigationBarTitle
@@ -286,8 +287,8 @@ import UIKit
                 // End refreshing
                 self?.refreshControl.endRefreshing()
                 
-                // disable refresh control
-                self?.refreshControl.isEnabled = false
+                // Enable refresh control
+                self?.refreshControl.removeFromSuperview()
                 
             }) { [weak self] error in
                 
@@ -296,9 +297,6 @@ import UIKit
                 
                 // Reload table view
                 self?.tableView.reloadData()
-                
-                // Enable refresh control
-                self?.refreshControl.isEnabled = true
                 
                 // End refreshing
                 self?.refreshControl.endRefreshing()

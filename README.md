@@ -181,7 +181,7 @@ used to to show the countries list and select one of the countries, this view co
 
 #### Public Properties:
 
-1. pickerConfiguration: you can set a custom configuration instead of the default configuration as dicribed in view customization section.
+1. pickerConfiguration: you can set a custom configuration instead of the default configuration as described in view customization section.
 2. selectedCountry: you can set country to be selected when picker opened.
 2. delegate : Picker Delegate
 3. dataSourceDelegate: Data Source Delegate

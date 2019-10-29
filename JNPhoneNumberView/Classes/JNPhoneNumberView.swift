@@ -377,7 +377,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
      Is Valid Phone Number
      - Returns: bool falg to indicate if its valid phone number
      */
-    func isValidPhoneNumber() -> Bool {
+    @objc public func isValidPhoneNumber() -> Bool {
         
         // Is phone number valid
         let isValidPhoneNumber = PhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.dialCode)

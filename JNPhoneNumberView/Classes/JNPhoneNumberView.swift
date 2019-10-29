@@ -150,7 +150,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if modifiedPhoneNumber.first == "+" {
             
             // Parsed phone number
-            if let parsedPhoneNumber = PhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: self.selectedCountry.code) {
+            if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: self.selectedCountry.code) {
                 
                 // Adjust selected country
                 self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber.countryCode.description)
@@ -380,7 +380,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @objc public func isValidPhoneNumber() -> Bool {
         
         // Is phone number valid
-        let isValidPhoneNumber = PhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.dialCode)
+        let isValidPhoneNumber = JNPhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.dialCode)
         
         return isValidPhoneNumber
     }

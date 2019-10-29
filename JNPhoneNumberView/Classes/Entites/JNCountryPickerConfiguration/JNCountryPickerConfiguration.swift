@@ -62,6 +62,7 @@ import UIKit
     /// Navigation bar title
     @objc public var navigationBarTitle: String
     
+    /// Navigation bar title Text Attributtes
     @objc public var navigationBarTitleTextAttributes: [NSAttributedString.Key : Any]
     
     /// Select bar button title

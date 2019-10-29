@@ -117,7 +117,7 @@ used to to show the country dial code and the phone number, you can click on the
 used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
 
 ### Screenshots
-<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif" width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/5199603/67771968-f32b8c80-fa61-11e9-8b1d-3b22145d9e40.png" width="200" height="400"/>        <img src="https://user-images.githubusercontent.com/5199603/67771812-ad6ec400-fa61-11e9-8ce5-47c8a395812b.gif" width="200" height="400"/>        <img src="https://user-images.githubusercontent.com/5199603/67771936-e3ac4380-fa61-11e9-88a9-a4a80dc18da8.gif" width="200" height="400"/>
 
 ### Usage
 

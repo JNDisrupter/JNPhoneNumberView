@@ -18,7 +18,7 @@ public class PhoneNumberUtil {
      - Parameter defaultRegion: default region as string
      - Returns: flag to indicates
      */
-    public class func isPhoneNumberValid(phoneNumber: String, defaultRegion: String) -> Bool {
+    @objc public class func isPhoneNumberValid(phoneNumber: String, defaultRegion: String) -> Bool {
         
         // Init phone number util
         let phoneNumberUtil = NBPhoneNumberUtil()
@@ -37,7 +37,7 @@ public class PhoneNumberUtil {
      - Parameter defaultRegion: default region as string
      - Returns: parsed phone number as NBPhoneNumber
      */
-    public class func parsePhoneNumber(_ phoneNumber: String, defaultRegion: String) -> NBPhoneNumber? {
+    @objc public class func parsePhoneNumber(_ phoneNumber: String, defaultRegion: String) -> NBPhoneNumber? {
         
         // Init phone number util
         let phoneNumberUtil = NBPhoneNumberUtil()

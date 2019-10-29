@@ -112,37 +112,37 @@ used to to show the country dial code and the phone number, you can click on the
 1. delegate : Picker Delegate
 2. dataSourceDelegate: Data Source Delegate
 
-### Screenshots
-<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png" width="200" height="400"/>     <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/>    <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif" width="200" height="400"/>
-
 ## JNCountryPickerViewController
 
 used to to show the countries list and select one of the countries, this view controller has a delegate methods to pass the selected country as JNCountry, also we provide the developer the flexiability to pass a custom country list insead of use the cached one.
 
 ### Screenshots
-<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/> 
+<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot1.png" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker1.gif" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/countrypicker2.gif" width="200" height="400"/>
 
 ### Usage
 
 #### To present JNCountryPickerViewController programmatically:
 
 1. Initiate JNCountryPickerViewController.
+    ```swift
+      let countryPickerViewController = JNCountryPickerViewController()
+    ```
 
 2. Emped the view controller in navigation controller.
-
+    ```swift
+      let nevigationController = UINavigationController(rootViewController: countryPickerViewController)
+    ```
 3. Present the navigation controller modally.
-
+    ```swift
+      self.present(nevigationController, animated: true, completion: nil)
+    ```
+    
 - ####  Implement JNCountryPickerViewControllerDelegate:
 
     Set the 'delegate' in your view controller and implement the following methods:
     
     - Did select Country
     ```swift
-
-    /**
-    Did Select Country
-    - Parameter country: country as JNCountry.
-    */
     func countryPickerViewController(didSelectCountry country: JNCountry)
     ```
     
@@ -152,36 +152,32 @@ used to to show the countries list and select one of the countries, this view co
 
     - Load country list from custom source
     ```swift
-
-    /**
-    Load country list
-    - Parameter completion: completion block
-    */
     func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void)
-
     ```
     
 - #### View Customization:
-We provide appearance customization using **JNCountryPickerConfiguration** that has the following attributtes:
-     - ***selectedTitleFont*** Selected item title font.
-     - ***titleFont*** Not selected item title font.
-     - ***selectedTitleColor*** Selected item title color.
-     - ***titleColor*** Not selected item title color.
-     - ***emptySearchMessageFont*** Message for empty search result.
-     - ***emptySearchMessageColor*** Color for empty search result message.
-     - ***searchBarTintColor*** Search bar tint color.
-     - ***navigationBarColor*** Navigation bar color.
-     - ***naigationBarTintColor*** Navigation bar tint color.
-     - ***navigationBarTitle*** Navigation bar Title.
-     - ***selectBarButtonTitle*** Select bar button title.
-     - ***loadingAcivityIndicatorColor*** Loading Acivity Indicator Color.
-     - ***emptySearchMessage*** Message for empty search result.
-     - ***emptySearchImage*** Image for empty search result.
-     - ***viewBackgroundColor*** View controller background color.
-     - ***pickerLanguage*** Picker language.
-     - ***tableCellInsets*** Cell margins.
-     - ***tableCellCornerRaduis*** Cell corner raduis.
-     - ***tableCellBackgroundColor*** Cell background color.
+    We provide appearance customization using **JNCountryPickerConfiguration** that has the following attributtes:
+    
+    - ***selectedTitleFont*** Selected item title font.
+    - ***titleFont*** Not selected item title font.
+    - ***selectedTitleColor*** Selected item title color.
+    - ***titleColor*** Not selected item title color.
+    - ***emptySearchMessageFont*** Message for empty search result.
+    - ***emptySearchMessageColor*** Color for empty search result message.
+    - ***searchBarTintColor*** Search bar tint color.
+    - ***navigationBarColor*** Navigation bar color.
+    - ***naigationBarTintColor*** Navigation bar tint color.
+    - ***navigationBarTitle*** Navigation bar Title.
+    - ***navigationBarTitleTextAttributes*** Navigation bar title text attributtes.
+    - ***selectBarButtonTitle*** Select bar button title.
+    - ***loadingAcivityIndicatorColor*** Loading acivity indicator color.    
+    - ***emptySearchMessage*** Message for empty search result.
+    - ***emptySearchImage*** Image for empty search result.
+    - ***viewBackgroundColor*** View controller background color.
+    - ***pickerLanguage*** Picker language.
+    - ***tableCellInsets*** Cell margins.    
+    - ***tableCellCornerRaduis*** Cell corner raduis.
+    - ***tableCellBackgroundColor*** Cell background color.
 
 #### Public Properties:
 
@@ -192,8 +188,13 @@ We provide appearance customization using **JNCountryPickerConfiguration** that 
 
 ## Notes
 
-1. Custom country entitiy must conform to JNCountry protocol.
-
+1. Custom country entitiy must conform to JNCountry protocol that has the following:
+    - ***code*** Country code.
+    - ***name*** Country name.
+    - ***dialCode*** Country dial code.
+    
+    The Country Data should Follow ***ISO 3166-1***
+    
 ## Author
 
 Hamzeh Khanfar & Jayel Zaghmoutt

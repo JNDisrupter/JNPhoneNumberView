@@ -1,5 +1,5 @@
 //
-//  PhoneNumberUtil.swift
+//  JNPhoneNumberUtil.swift
 //  CountryPicker
 //
 //  Created by Hamzawy Khanfar on 07/10/2019.
@@ -9,8 +9,8 @@
 import Foundation
 import libPhoneNumber_iOS
 
-/// Phone Number Util
-public class PhoneNumberUtil {
+/// JNPhone Number Util
+@objc public class JNPhoneNumberUtil: NSObject {
     
     /**
      Is Phone Number Valid
@@ -24,7 +24,7 @@ public class PhoneNumberUtil {
         let phoneNumberUtil = NBPhoneNumberUtil()
         
         // Parse phone number
-        if let parsedPhoneNumber = PhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
+        if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
             return phoneNumberUtil.isValidNumber(parsedPhoneNumber)
         }
         

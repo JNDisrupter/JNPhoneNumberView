@@ -29,7 +29,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 used to to show the country dial code and the phone number, you can click on the dial code and select another country from the countries picker, this view has a delegate methods to pass the international number and validity of it.
 
 ### Screenshots
-<img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot2.png" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/screenshot3.png" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber1.gif" width="200" height="400"/>        <img src="https://github.com/JNDisrupter/JNPhoneNumberView/raw/enhancements/Images/phonenumber2.gif" width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/5199603/67772070-20783a80-fa62-11e9-8561-b4ecb5789c60.png" width="200" height="400"/>        <img src="https://user-images.githubusercontent.com/5199603/67772097-2d952980-fa62-11e9-8eb8-2c9aec955bb1.png" width="200" height="400"/>        <img src="https://user-images.githubusercontent.com/5199603/67772140-3c7bdc00-fa62-11e9-94f8-7c69fca5c7ae.gif" width="200" height="400"/>        <img src="https://user-images.githubusercontent.com/5199603/67772169-47cf0780-fa62-11e9-9391-a4fafa6cfc47.gif" width="200" height="400"/>
 
 ### Usage
 

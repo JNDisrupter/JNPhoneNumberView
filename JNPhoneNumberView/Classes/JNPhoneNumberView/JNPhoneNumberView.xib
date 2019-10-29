@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JNPhoneNumberView" customModule="JNPhoneNumberView" customModuleProvider="target">
+            <connections>
+                <outlet property="countryCodeLabel" destination="lNL-sU-C1m" id="Aaj-6w-QJH"/>
+                <outlet property="flagLabel" destination="XZm-0R-MRH" id="MfO-75-ylB"/>
+                <outlet property="textField" destination="ad2-b7-iqK" id="yu7-29-OAw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="403" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpz-5k-MUF">
+                    <rect key="frame" x="0.0" y="0.0" width="403" height="240"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad2-b7-iqK">
+                            <rect key="frame" x="16" y="0.0" width="377" height="240"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WH4-Oy-Cah"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <connections>
+                                <action selector="textFieldDidChangeText:" destination="-1" eventType="editingChanged" id="mpT-Rk-Y9e"/>
+                            </connections>
+                        </textField>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAd-gf-YXL">
+                            <rect key="frame" x="0.0" y="0.0" width="11" height="240"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZm-0R-MRH">
+                                    <rect key="frame" x="5" y="0.0" width="0.0" height="240"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNL-sU-C1m">
+                                    <rect key="frame" x="5" y="0.0" width="0.0" height="240"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AS-Jn-kiH">
+                                    <rect key="frame" x="10" y="2" width="1" height="236"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="1" id="cKk-D0-VgT"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="lNL-sU-C1m" firstAttribute="top" secondItem="oAd-gf-YXL" secondAttribute="top" id="683-uL-CUA"/>
+                                <constraint firstItem="3AS-Jn-kiH" firstAttribute="top" secondItem="oAd-gf-YXL" secondAttribute="top" constant="2" id="6Ja-CQ-BoR"/>
+                                <constraint firstItem="XZm-0R-MRH" firstAttribute="trailing" secondItem="lNL-sU-C1m" secondAttribute="leading" id="Ae8-MB-gOg"/>
+                                <constraint firstItem="lNL-sU-C1m" firstAttribute="trailing" secondItem="3AS-Jn-kiH" secondAttribute="leading" constant="-5" id="Haa-1t-ozZ"/>
+                                <constraint firstAttribute="trailing" secondItem="3AS-Jn-kiH" secondAttribute="trailing" id="Qwo-4x-B6n"/>
+                                <constraint firstAttribute="bottom" secondItem="3AS-Jn-kiH" secondAttribute="bottom" constant="2" id="XhI-AG-P2x"/>
+                                <constraint firstAttribute="bottom" secondItem="lNL-sU-C1m" secondAttribute="bottom" id="f1I-UT-bbF"/>
+                                <constraint firstItem="XZm-0R-MRH" firstAttribute="top" secondItem="oAd-gf-YXL" secondAttribute="top" id="fI9-IT-mpW"/>
+                                <constraint firstItem="XZm-0R-MRH" firstAttribute="leading" secondItem="oAd-gf-YXL" secondAttribute="leading" constant="5" id="fRP-dC-J7U"/>
+                                <constraint firstAttribute="bottom" secondItem="XZm-0R-MRH" secondAttribute="bottom" id="z4O-mX-Cml"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="oAd-gf-YXL" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" id="7A7-ns-sAv"/>
+                        <constraint firstItem="oAd-gf-YXL" firstAttribute="trailing" secondItem="ad2-b7-iqK" secondAttribute="leading" constant="-5" id="M8S-L1-wan"/>
+                        <constraint firstAttribute="right" secondItem="ad2-b7-iqK" secondAttribute="right" constant="10" id="Rdj-kN-CG5"/>
+                        <constraint firstAttribute="bottom" secondItem="oAd-gf-YXL" secondAttribute="bottom" id="cre-Vz-wOG"/>
+                        <constraint firstItem="ad2-b7-iqK" firstAttribute="top" secondItem="vpz-5k-MUF" secondAttribute="top" id="d8b-ol-53U"/>
+                        <constraint firstAttribute="bottom" secondItem="ad2-b7-iqK" secondAttribute="bottom" id="gaV-7F-YxH"/>
+                        <constraint firstItem="oAd-gf-YXL" firstAttribute="leading" secondItem="vpz-5k-MUF" secondAttribute="leading" id="goK-LI-xc7"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="qja-Y9-Nkl" appends="YES" id="p5l-rp-3VS"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vpz-5k-MUF" secondAttribute="bottom" id="5Z7-ff-CSp"/>
+                <constraint firstItem="vpz-5k-MUF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7ff-ID-gfp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vpz-5k-MUF" secondAttribute="trailing" id="Ape-7o-HzT"/>
+                <constraint firstItem="vpz-5k-MUF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GHO-nw-zMw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="94.927536231884062" y="-164.73214285714286"/>
+        </view>
+        <tapGestureRecognizer id="qja-Y9-Nkl">
+            <connections>
+                <action selector="didClickAreaCodeSelectionButton:" destination="-1" id="TRE-cm-sme"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

@@ -30,10 +30,10 @@ extension JNCountryPickerViewController: UITableViewDataSource, UITableViewDeleg
         if let cellRepresentable = representable as? JNCountryPickerTableViewCellRepresentable {
             
             // Dequeue cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: JNCountryTableViewCell.getReuseIdentifier(), for: indexPath) as! JNCountryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: JNCountryPickerTableViewCell.getReuseIdentifier(), for: indexPath) as! JNCountryPickerTableViewCell
             
             // Setup cell
-            cell.setup(representable: cellRepresentable, containerViewInsets: UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0))
+            cell.setup(representable: cellRepresentable, containerViewInsets: self.pickerConfiguration.tableCellInsets, cornerRadious: self.pickerConfiguration.tableCellCornerRaduis, containerViewBackgroundColor: self.pickerConfiguration.tableCellBackgroundColor)
             
             return cell
         }
@@ -53,18 +53,29 @@ extension JNCountryPickerViewController: UITableViewDataSource, UITableViewDeleg
                 return cell
             }
                 
-            // Empty
+            // Empty search
             else if generalResourceCellRepresentable.type == .emptyDataWithImage {
                 
                 // Dequeue loading cell
                 let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.getReuseIdentifier(), for: indexPath) as! EmptyTableViewCell
                 
                 // Setup cell
-                cell.setup(attributedString: generalResourceCellRepresentable.text, image: UIImage(named: generalResourceCellRepresentable.imageName), emptyTableViewContentPosition: .top(value: 20.0))
+                cell.setup(attributedString: generalResourceCellRepresentable.text, image: UIImage(named: generalResourceCellRepresentable.imageName))
                 
                 return cell
             }
             
+            // Failure
+            else if generalResourceCellRepresentable.type == .emptyDataOnly {
+                
+                // Dequeue loading cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.getReuseIdentifier(), for: indexPath) as! EmptyTableViewCell
+                
+                // Setup cell
+                cell.setup(attributedString: generalResourceCellRepresentable.text)
+                
+                return cell
+            }
         }
         
         // Default
@@ -82,7 +93,16 @@ extension JNCountryPickerViewController: UITableViewDataSource, UITableViewDeleg
      Estimated height for row
      */
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        
+        // Height
+        let height = self.viewModel.heightForRow(at: indexPath, tableView: tableView)
+        
+        // Check if automatic height
+        if height == UITableView.automaticDimension {
+            return 70.0
+        }
+        
+        return height
     }
     
     /**

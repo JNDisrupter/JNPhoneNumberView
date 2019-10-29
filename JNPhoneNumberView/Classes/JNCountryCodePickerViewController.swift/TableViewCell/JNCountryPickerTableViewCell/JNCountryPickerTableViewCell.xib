@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JNCountryPickerTableViewCell" rowHeight="98" id="AC1-Xt-cUZ" customClass="JNCountryPickerTableViewCell" customModule="JNPhoneNumberView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AC1-Xt-cUZ" id="q4q-zc-oN4">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okb-HI-MiS">
+                        <rect key="frame" x="10.5" y="12.5" width="354" height="85"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nST-uY-KLA">
+                                <rect key="frame" x="15.5" y="35" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nST-uY-KLA" secondAttribute="height" id="Cat-ss-25h"/>
+                                    <constraint firstAttribute="width" constant="15" id="aMg-iZ-dis"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wm7-yl-5LJ">
+                                <rect key="frame" x="92.5" y="42.5" width="251.5" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg7-kj-BBY">
+                                <rect key="frame" x="40.5" y="5" width="42" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nST-uY-KLA" firstAttribute="leading" secondItem="okb-HI-MiS" secondAttribute="leading" constant="15.5" id="7H8-Nt-arW"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wm7-yl-5LJ" secondAttribute="bottom" constant="5" id="9rr-EP-aTt"/>
+                            <constraint firstItem="Hg7-kj-BBY" firstAttribute="top" secondItem="okb-HI-MiS" secondAttribute="top" constant="5" id="AVy-4u-UH2"/>
+                            <constraint firstAttribute="trailing" secondItem="Wm7-yl-5LJ" secondAttribute="trailing" constant="10" id="QDs-2F-Bd6"/>
+                            <constraint firstItem="Wm7-yl-5LJ" firstAttribute="centerY" secondItem="Hg7-kj-BBY" secondAttribute="centerY" id="RbK-Kx-vcf"/>
+                            <constraint firstItem="nST-uY-KLA" firstAttribute="centerY" secondItem="okb-HI-MiS" secondAttribute="centerY" id="d16-cT-xre"/>
+                            <constraint firstItem="Hg7-kj-BBY" firstAttribute="leading" secondItem="nST-uY-KLA" secondAttribute="trailing" constant="10" id="dKD-sw-8pO"/>
+                            <constraint firstItem="Wm7-yl-5LJ" firstAttribute="leading" secondItem="Hg7-kj-BBY" secondAttribute="trailing" constant="10" id="lmy-qF-oXG"/>
+                            <constraint firstItem="Wm7-yl-5LJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="okb-HI-MiS" secondAttribute="top" constant="5" id="msP-8b-DFm"/>
+                            <constraint firstAttribute="bottom" secondItem="Hg7-kj-BBY" secondAttribute="bottom" constant="5" id="tfD-0h-171"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="okb-HI-MiS" firstAttribute="top" secondItem="q4q-zc-oN4" secondAttribute="top" constant="12.5" id="38l-3S-NZ6"/>
+                    <constraint firstAttribute="bottom" secondItem="okb-HI-MiS" secondAttribute="bottom" id="ZlZ-Qc-ePy"/>
+                    <constraint firstAttribute="trailing" secondItem="okb-HI-MiS" secondAttribute="trailing" constant="10.5" id="dpl-cw-MbK"/>
+                    <constraint firstItem="okb-HI-MiS" firstAttribute="leading" secondItem="q4q-zc-oN4" secondAttribute="leading" constant="10.5" id="umc-hv-9I9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="okb-HI-MiS" id="DRS-bh-weg"/>
+                <outlet property="containerViewBottomConstraint" destination="ZlZ-Qc-ePy" id="BT9-AY-9G5"/>
+                <outlet property="containerViewLeadingConstraint" destination="umc-hv-9I9" id="blM-De-I91"/>
+                <outlet property="containerViewTopConstraint" destination="38l-3S-NZ6" id="95t-dl-3ye"/>
+                <outlet property="containerViewTrailingConstraint" destination="dpl-cw-MbK" id="tRV-GU-o5W"/>
+                <outlet property="countryNameLabel" destination="Wm7-yl-5LJ" id="btF-tD-vWe"/>
+                <outlet property="flagLabel" destination="Hg7-kj-BBY" id="7IL-Cm-sJ3"/>
+                <outlet property="pickerImageView" destination="nST-uY-KLA" id="9ed-LK-jma"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="80"/>
+        </tableViewCell>
+    </objects>
+</document>

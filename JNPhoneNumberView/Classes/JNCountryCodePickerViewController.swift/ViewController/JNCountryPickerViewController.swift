@@ -19,7 +19,7 @@ import UIKit
     @IBOutlet private(set) weak var tableView: UITableView!
     
     /// selected country
-    @objc var selectedCountry: JNCountry?
+    @objc public var selectedCountry: JNCountry?
     
     /// country list
     private var countryList: [JNCountry] = []
@@ -34,7 +34,10 @@ import UIKit
     @objc public weak var delegate: JNCountryPickerViewControllerDelegate?
     
     /// Data Source Delegate
-    @objc weak var dataSourceDelegate: JNCountryPickerViewControllerDataSourceDelegate?
+    @objc public weak var dataSourceDelegate: JNCountryPickerViewControllerDataSourceDelegate?
+    
+    /// Refresh control
+    private(set) var refreshControl: UIRefreshControl!
     
     /**
     Load View
@@ -61,7 +64,7 @@ import UIKit
         self.view.backgroundColor = pickerConfiguration.viewBackgroundColor
         
         // Init Country Picker View Model
-        self.viewModel = JNCountryPickerViewModel(pickerAttributes: self.pickerConfiguration, selectedCountry: self.selectedCountry)
+        self.viewModel = JNCountryPickerViewModel(pickerAttributes: self.pickerConfiguration)
         
         // Setup Search View
         self.setupSearchView()
@@ -71,6 +74,9 @@ import UIKit
         
         // Setup table view cell
         self.setupTableView()
+        
+        // Setup refresh control
+        self.setupRefreshControl()
         
         // Setup Select Bar Button
         self.setupSelectBarButtonItem()
@@ -112,6 +118,7 @@ import UIKit
         // Set naviation bar colors
         self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
         self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
+        self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
         
         // set title
         self.title = self.pickerConfiguration.navigationBarTitle
@@ -125,19 +132,13 @@ import UIKit
      */
     private func setupTableView() {
         
+        self.tableView.estimatedSectionFooterHeight = 0
+        self.tableView.estimatedSectionHeaderHeight = 0
+        
         // Register cells
         EmptyTableViewCell.registerCell(in: self.tableView)
         LoadingTableViewCell.registerCell(in: self.tableView)
-        JNCountryTableViewCell.registerCell(in: self.tableView)
-        
-        if #available(iOS 11.0, *) {
-            
-            // Safe area insets
-            let safeAreaInsets = self.view.safeAreaInsets
-            
-            // Set table insets
-            self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: safeAreaInsets.bottom, right: 0.0)
-        }
+        JNCountryPickerTableViewCell.registerCell(in: self.tableView)
     }
     
     /**
@@ -147,6 +148,8 @@ import UIKit
         
         // Set search bar delegate
         self.searchBar.delegate = self
+        self.searchBar.barTintColor = self.pickerConfiguration.searchBarTintColor
+        self.searchBar.backgroundImage = UIImage() 
     }
     
     /**
@@ -167,6 +170,31 @@ import UIKit
     private func setupSelectBarButtonItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: self.pickerConfiguration.selectBarButtonTitle.capitalized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickSelectBarButton))
         self.enableSelectBarButton(isEnabled: false)
+    }
+    
+    /**
+     Setup refresh control
+     */
+    private func setupRefreshControl() {
+        
+        if #available(iOS 10.0, *) {
+            
+            // Set refresh control
+            self.tableView.refreshControl = UIRefreshControl()
+            self.refreshControl = self.tableView.refreshControl
+        } else {
+            
+            // Init refresh control
+            self.refreshControl = UIRefreshControl()
+            self.tableView.addSubview(self.refreshControl)
+        }
+        
+        // Customize refresh control
+        self.refreshControl.tintColor = self.pickerConfiguration.loadingAcivityIndicatorColor
+        self.refreshControl.addTarget(self, action: #selector(refreshTableView(_:)), for: UIControl.Event.valueChanged)
+        
+        // Disable refresh control
+        self.refreshControl.isEnabled = false
     }
     
     /**
@@ -217,8 +245,11 @@ import UIKit
             guard let weakSelf = self  else { return }
             
             // Country codes and reload data
-            weakSelf.viewModel.setCountryList(countryList)
+            weakSelf.viewModel.setCountryList(countryList, selectedCountry: weakSelf.selectedCountry)
             weakSelf.tableView.reloadData()
+            
+            // Enable search bar
+            self?.searchBar.isUserInteractionEnabled = true
         }
     }
     
@@ -227,22 +258,48 @@ import UIKit
      */
     private func loadData() {
         
+        // Disbale search bar
+        self.searchBar.isUserInteractionEnabled = false
+        
         // Check if data source is available
         if let dataSourceDelegate = self.dataSourceDelegate {
             
             // Call delegate
-            dataSourceDelegate.countryPickerViewControllerLoadCountryList { (countryList) in
+            dataSourceDelegate.countryPickerViewControllerLoadCountryList(completion: { [weak self] countryList in
                 
                 // Check if empty
                 if countryList.isEmpty {
                     
                     // Load Local countries
-                    self.loadLocalCountries()
+                    self?.loadLocalCountries()
                 } else {
                     
                     // Set country code to view model
-                    self.viewModel.setCountryList(countryList)
+                    self?.viewModel.setCountryList(countryList, selectedCountry: self?.selectedCountry)
+                    
+                    // Reload table view
+                    self?.tableView.reloadData()
+                    
+                    // Enable search bar
+                    self?.searchBar.isUserInteractionEnabled = true
                 }
+                
+                // End refreshing
+                self?.refreshControl.endRefreshing()
+                
+                // Enable refresh control
+                self?.refreshControl.removeFromSuperview()
+                
+            }) { [weak self] error in
+                
+                // Handle error
+                self?.viewModel.handleLoadCountriesFailure(errorMessage: error.localizedDescription)
+                
+                // Reload table view
+                self?.tableView.reloadData()
+                
+                // End refreshing
+                self?.refreshControl.endRefreshing()
             }
         } else {
             
@@ -266,6 +323,17 @@ import UIKit
         // Resgin first responder
         self.searchBar.resignFirstResponder()
     }
+    
+    // MARK: - Refresh control
+    
+    /**
+     Refresh Table View
+     */
+    @objc func refreshTableView(_ sender:AnyObject) {
+        
+        // Reload data
+        self.loadData()
+    }
 }
 
 /// JN Country Picker View Controller Delegate
@@ -284,6 +352,7 @@ import UIKit
     /**
      Load country list
      - Parameter completion: completion block
+     - Parameter errorCompletion: errorCompletion
      */
-    @objc func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
 }

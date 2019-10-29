@@ -24,13 +24,17 @@ class JNPhoneNumberViewExample: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "JN Phone Number View Example"
-
+        
         // Set delegate
         self.phoneNumberView.delegate = self
-        self.phoneNumberView.setDefaultCountryCode("PS")
+        self.phoneNumberView.setDefaultCountryCode("US")
         self.phoneNumberView.backgroundColor = UIColor.gray
-        self.phoneNumberView.setViewAttributes(JNPhoneNumberViewConfiguration())
-        self.phoneNumberView.setPhoneNumber("123123123")
+        self.phoneNumberView.setViewConfiguration(self.getConfigration())
+        self.phoneNumberView.setPhoneNumber("")
+        self.phoneNumberView.layer.cornerRadius = 5.0
+        self.phoneNumberView.layer.borderColor = UIColor.lightGray.cgColor
+        self.phoneNumberView.layer.borderWidth = 1.0
+        self.phoneNumberView.backgroundColor = UIColor.lightGray
     }
     
 }
@@ -49,9 +53,13 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      Get country code picker attributes
      */
     func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration {
-        let configiration = JNCountryPickerConfiguration()
-        configiration.pickerLanguage = .ar
-        return configiration
+        let configuration = JNCountryPickerConfiguration()
+        configuration.pickerLanguage = .en
+        configuration.tableCellInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        configuration.viewBackgroundColor = UIColor.lightGray
+        configuration.tableCellBackgroundColor = UIColor.white
+        
+        return configuration
     }
     
     /**
@@ -61,6 +69,8 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      */
     func phoneNumberView(didChangeText text: String) {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text)"
+    
+        self.phoneNumberView.setViewConfiguration(self.getConfigration())
     }
     
     /**
@@ -73,6 +83,28 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
         self.phoneNumberLabel.text = "International Phone Number: \n \(text) \n \(validationMessage)"
         
         self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
+    }
+    
+    /**
+     Country Did Changed
+     - Parameter country: New Selected Country
+     - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     */
+    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool) {
+        let validationMessage = isValidPhoneNumber ? "Valid Phone Number" : "Invalid Phone Number"
+        self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getPhoneNumber()) \n \(validationMessage)"
+        
+        self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
+    }
+    
+    private func getConfigration() -> JNPhoneNumberViewConfiguration {
+        let configrartion = JNPhoneNumberViewConfiguration()
+        configrartion.phoneNumberTitleColor = UIColor.white
+        configrartion.countryDialCodeTitleColor = UIColor.white
+        configrartion.phoneNumberTitleFont = UIFont.systemFont(ofSize: 18.0)
+        configrartion.countryDialCodeTitleFont = UIFont.systemFont(ofSize: 20.0)
+        
+        return configrartion
     }
 }
 

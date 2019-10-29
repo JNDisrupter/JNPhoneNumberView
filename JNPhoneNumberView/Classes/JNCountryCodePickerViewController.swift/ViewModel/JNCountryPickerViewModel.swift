@@ -17,8 +17,8 @@ class JNCountryPickerViewModel {
     /// Filtered Country Representables
     private var filteredCountryRepresentables: [TableViewCellRepresentable]
     
-    /// Selected country
-    private var selectedCountry: JNCountry?
+    /// Selected country index
+    private var selectedCountryIndex: Int?
     
     /// Search Text
     private var searchText: String = ""
@@ -32,12 +32,8 @@ class JNCountryPickerViewModel {
     /**
      Initializer
      - Parameter pickerAttributes: Country Code Picker Attributes
-     - Parameter selectedCountry: selected country
      */
-    init(pickerAttributes: JNCountryPickerConfiguration, selectedCountry: JNCountry?) {
-        
-        // Set selected country
-        self.selectedCountry = selectedCountry
+    init(pickerAttributes: JNCountryPickerConfiguration) {
         
         // Set picker attributes
         self.pickerAttributes = pickerAttributes
@@ -46,9 +42,8 @@ class JNCountryPickerViewModel {
         self.countryRepresentables = []
         self.filteredCountryRepresentables = []
         
-        // Add loading GeneralResourceViewRepresentable
-        let loadingGeneralResource = GeneralResource.getLoadingGeneralResource()
-        self.countryRepresentables.append(GeneralResourceTableViewCellRepresentable(generalResource: loadingGeneralResource))
+        // Handle data loading
+        self.handleDataLoading()
     }
     
     // MARK: - Setters
@@ -56,14 +51,18 @@ class JNCountryPickerViewModel {
     /**
      Set country list
      - Parameters countryLisr: Country list as list of JNCountry
+     - Parameter selectedCountry: selected country
      */
-    func setCountryList(_ countryList: [JNCountry]) {
+    func setCountryList(_ countryList: [JNCountry], selectedCountry: JNCountry?) {
         
         // Set country code
         self.countryList = countryList
         
+        // Reset selected index
+        self.selectedCountryIndex = nil
+        
         // Build representables
-        self.buildRepresentables()
+        self.buildRepresentables(selectedCountry: selectedCountry)
     }
     
     // MARK: - Table view methods
@@ -92,10 +91,16 @@ class JNCountryPickerViewModel {
         
         // Check mode if search or normal
         if self.searchText.isEmpty {
-            return self.countryRepresentables[indexPath.row]
+            if self.countryRepresentables.count > indexPath.row {
+                return self.countryRepresentables[indexPath.row]
+            }
         } else {
-            return self.filteredCountryRepresentables[indexPath.row]
+            if self.filteredCountryRepresentables.count > indexPath.row {
+                return self.filteredCountryRepresentables[indexPath.row]
+            }
         }
+        
+        return nil
     }
     
     /**
@@ -129,15 +134,20 @@ class JNCountryPickerViewModel {
     func setSelected(indexPath: IndexPath) {
         
         // Get Item Representable at index path
-        if let itemRepresentable = self.representableForRow(at: indexPath) {
+        if let selectedCountryIndex = self.selectedCountryIndex, let previousSelectedItemRepresentable = self.countryRepresentables[selectedCountryIndex] as? JNCountryPickerTableViewCellRepresentable {
             
-            guard itemRepresentable.itemDataIndex >= 0 ,itemRepresentable.itemDataIndex < self.countryList.count else { return }
+            // Un select previous one
+            previousSelectedItemRepresentable.setSelected(false)
+        }
+        
+        // Get Item Representable at index path
+        if let itemRepresentable = self.representableForRow(at: indexPath) as? JNCountryPickerTableViewCellRepresentable {
             
-            // Set selected item
-            self.selectedCountry = self.countryList[itemRepresentable.itemDataIndex]
+            // Select new representable
+            itemRepresentable.setSelected(true)
             
-            // Build representables
-            self.buildRepresentables()
+            // Set selected index
+            self.selectedCountryIndex = itemRepresentable.itemDataIndex
         }
     }
     
@@ -146,37 +156,52 @@ class JNCountryPickerViewModel {
      - Returns: Selected country
      */
     func getSelectedItem() -> JNCountry? {
-        return self.selectedCountry
+        
+        // Check if theres selected index and return coutrny
+        if let selectedCountryIndex = self.selectedCountryIndex {
+            return self.countryList[selectedCountryIndex]
+        }
+        
+        // default
+        return nil
     }
     
     // MARK: - Build Representables
     
     /**
      Build Representables
+     - Parameter selectedCountry: selected country as JNCountry
      */
-    private func buildRepresentables() {
+    private func buildRepresentables(selectedCountry: JNCountry?) {
         
         // Remove all item
         self.countryRepresentables.removeAll()
-
+        
         for (index, item) in self.countryList.enumerated() {
             
-            // Is Selected
-            let isSelected = item.code == (self.selectedCountry?.code ?? "")
+            // Init is selected
+            var isSelected = false
             
-            // Check if selected
-            if isSelected {
-                self.selectedCountry = item
+            // Selected country
+            if let selectedCountry = selectedCountry, self.selectedCountryIndex == nil {
+                
+                // Is Selected
+                isSelected = item.code == selectedCountry.code
+                
+                // Check if selected
+                if isSelected {
+                    self.selectedCountryIndex = index
+                }
             }
             
             // Title
             let title = item.name + " ( " + item.dialCode + " )"
-        
+            
             
             // Init representable
             let countryRepresentable = JNCountryPickerTableViewCellRepresentable(flag: CountryUtil.generateFlag(from: item.code),title: title, isSelected: isSelected,
-                                                                               
-                                                                               selectedCountryNameAttributes:
+                                                                                 
+                                                                                 selectedCountryNameAttributes:
                 [NSAttributedString.Key.foregroundColor : self.pickerAttributes.selectedTitleColor, NSAttributedString.Key.font : self.pickerAttributes.selectedTitleFont]
                 , normalCountryNameAttributes:
                 [NSAttributedString.Key.foregroundColor : self.pickerAttributes.selectedTitleColor, NSAttributedString.Key.font : self.pickerAttributes.selectedTitleFont])
@@ -191,6 +216,28 @@ class JNCountryPickerViewModel {
         if !searchText.isEmpty {
             self.filterContent(text: self.searchText)
         }
+    }
+    
+    // MARK: - Error Handling
+    
+    /**
+     Handle load countries failure
+     - Parameter errorMessage: error message as string
+     */
+    func handleLoadCountriesFailure(errorMessage: String) {
+        
+        // Build failure representable
+        self.countryRepresentables = [GeneralResourceTableViewCellRepresentable(generalResource: self.getFailedRequestGeneralResource(message: errorMessage))]
+    }
+    
+    /**
+     Handle data loading
+     */
+    private func handleDataLoading() {
+        
+        // Add loading GeneralResourceViewRepresentable
+        let loadingGeneralResource = GeneralResource.getLoadingGeneralResource()
+        self.countryRepresentables.append(GeneralResourceTableViewCellRepresentable(generalResource: loadingGeneralResource))
     }
     
     // MARK: - General resource
@@ -209,13 +256,30 @@ class JNCountryPickerViewModel {
         return generalResource
     }
     
+    /**
+     Get Failed request General Resource
+     - Parameter message: error message as string
+     */
+    private func getFailedRequestGeneralResource(message: String) -> GeneralResource {
+        
+        // Init Empty General Resource
+        let generalResource = GeneralResource()
+        generalResource.displayText = message
+        generalResource.type = GeneralResourceType.emptyDataOnly
+        
+        return generalResource
+    }
+    
     // MARK: - Search
     
     /**
      Filter Representables
      - Parameter text: Search text
      */
-    func filterContent(text: String){
+    func filterContent(text: String) {
+        
+        // Check if theres no counties
+        if self.countryList.isEmpty { return }
         
         // Set serach text
         self.searchText = text

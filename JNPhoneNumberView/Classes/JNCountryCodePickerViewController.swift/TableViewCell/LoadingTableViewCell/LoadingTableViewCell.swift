@@ -83,7 +83,7 @@ class LoadingTableViewCell: UITableViewCell {
         
         // Init Container View
         self.containerView = UIView()
-        self.containerView.backgroundColor = UIColor.white
+        self.containerView.backgroundColor = UIColor.clear
         
         // Add contaienr view
         self.contentView.addSubview(self.containerView)

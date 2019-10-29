@@ -38,7 +38,7 @@ class JNCountryPickerTableViewCellRepresentable: TableViewCellRepresentable {
     init() {
         
         // Set values
-        self.cellHeight = JNCountryTableViewCell.getCellHeight()
+        self.cellHeight = JNCountryPickerTableViewCell.getCellHeight()
         self.itemDataIndex = -1
         self.countryNameAttributedString = NSAttributedString()
         self.selectedCountryNameAttributes = [:]

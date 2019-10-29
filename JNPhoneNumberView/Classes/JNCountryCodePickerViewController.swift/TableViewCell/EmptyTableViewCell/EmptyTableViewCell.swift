@@ -8,11 +8,6 @@
 
 import UIKit
 
-/// Empty Table View Content Position
-enum EmptyTableViewContentPosition {
-    case top(value: CGFloat)
-}
-
 /// Component Size
 private struct ComponentSize {
     static let emptyImageWidth: CGFloat                = 90.0
@@ -40,10 +35,7 @@ class EmptyTableViewCell: UITableViewCell {
     
     /// Container Top Constraint
     private var containerTopConstraint: NSLayoutConstraint!
-    
-    /// Container Center Constraint
-    private var containerCenterConstraint: NSLayoutConstraint!
-    
+
     /// Empty label bottom Constraint
     var emptyLabelBottomConstraint: NSLayoutConstraint!
     
@@ -82,7 +74,7 @@ class EmptyTableViewCell: UITableViewCell {
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
         self.containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: ComponentSize.containerViewMargin).isActive = true
         self.containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -ComponentSize.containerViewMargin).isActive = true
-        self.containerTopConstraint = self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant:0)
+        self.containerTopConstraint = self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: ComponentSize.emptyLabelTopFromImage)
         self.containerTopConstraint.isActive = true
         
         // Create empty image view
@@ -118,6 +110,11 @@ class EmptyTableViewCell: UITableViewCell {
         
         // Set cell selection style
         self.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        // Set Background Color
+        self.containerView.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.clear
     }
     
     // MARK: - Setup cell
@@ -128,20 +125,7 @@ class EmptyTableViewCell: UITableViewCell {
      - Parameter image : The image to set for the empty cell
      - Parameter emptyTableViewContentPosition: The content position in table view.
      */
-    func setup(attributedString: NSAttributedString? = nil, image: UIImage? = nil, emptyTableViewContentPosition: EmptyTableViewContentPosition, emptyImageWidth: CGFloat = ComponentSize.emptyImageWidth) {
-        
-        // Remove top & center constraints
-        self.removeConstraint()
-        
-        // Add constraints according to empty table view cell position
-        switch emptyTableViewContentPosition {
-        case EmptyTableViewContentPosition.top(let value):
-            
-            // Add top constraint
-            self.containerTopConstraint = self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor , constant : value)
-            self.containerTopConstraint.isActive = true
-            break
-        }
+    func setup(attributedString: NSAttributedString? = nil, image: UIImage? = nil) {
         
         // Set attributed string
         if attributedString != nil {
@@ -156,7 +140,7 @@ class EmptyTableViewCell: UITableViewCell {
             // Set empty label top constraint
             self.emptyLabelTopConstraint.constant = ComponentSize.emptyLabelTopFromImage
             
-            self.emptyImageViewWidthConstraint.constant = emptyImageWidth
+            self.emptyImageViewWidthConstraint.constant = ComponentSize.emptyImageWidth
             self.emptyImageView?.image = image
         } else {
             
@@ -165,24 +149,6 @@ class EmptyTableViewCell: UITableViewCell {
             
             self.emptyImageViewWidthConstraint.constant = 0
             self.emptyImageView?.image = nil
-        }
-    }
-    
-    /**
-     Remove top & center constraints
-     */
-    private func removeConstraint() {
-        
-        // Remove center constraints
-        if self.containerCenterConstraint != nil {
-            self.containerCenterConstraint.isActive = false
-            self.containerCenterConstraint = nil
-        }
-        
-        // Remove top constraints
-        if self.containerTopConstraint != nil {
-            self.containerTopConstraint.isActive = false
-            self.containerTopConstraint = nil
         }
     }
     

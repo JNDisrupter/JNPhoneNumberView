@@ -159,7 +159,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
                 self.setupCountyLabels()
                 
                 // Set phone number
-                self.textField.text = parsedPhoneNumber.nationalNumber.description
+                self.textField.text = parsedPhoneNumber.nationalNumber.intValue >= 0 ? parsedPhoneNumber.nationalNumber.description : ""
             } else {
                 
                 // remove the "+" and use it as local number

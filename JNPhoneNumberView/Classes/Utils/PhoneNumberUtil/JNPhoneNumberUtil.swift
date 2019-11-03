@@ -50,7 +50,35 @@ import libPhoneNumber_iOS
             // Return phone number
             return phoneNumber
         } catch {
-            return nil
+            
+            // National number
+            var nationalNumber: NSString? = nil
+              
+            // Dial code
+            let dialCode = phoneNumberUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
+            
+            // Check if dial code or national phone number not detected
+            if (dialCode?.description ?? "").isEmpty {
+                return  nil
+            }
+            
+            // Create phone number object
+            let nbPhoneNumber = NBPhoneNumber()
+            
+            // Set dial code
+            nbPhoneNumber.countryCode = dialCode
+            
+            // Check if national number not empty
+            if nationalNumber!.length > 0 {
+                
+                // Convert national number from string to number
+                let nationalPhoneNumber = NSNumber(value: nationalNumber!.floatValue)
+                
+                // set national number
+                nbPhoneNumber.nationalNumber = nationalPhoneNumber
+            }
+            
+            return nbPhoneNumber
         }
     }
 }

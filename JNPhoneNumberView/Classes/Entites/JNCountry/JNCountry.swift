@@ -9,7 +9,7 @@
 import Foundation
 
 /// JNCountry
-@objc public protocol JNCountry: NSObjectProtocol {
+@objc public protocol JNCountry {
     
     /// Code
     var code: String {set get}
@@ -20,3 +20,4 @@ import Foundation
     /// Dial code
     var dialCode: String {set get}
 }
+

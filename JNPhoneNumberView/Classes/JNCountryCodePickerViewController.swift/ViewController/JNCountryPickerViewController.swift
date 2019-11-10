@@ -86,6 +86,9 @@ import UIKit
         
         // Load data
         self.loadData()
+        
+        // disable extend edges for ios 9.0, view goes under navigation bar
+        self.edgesForExtendedLayout = []
     }
     
     /**

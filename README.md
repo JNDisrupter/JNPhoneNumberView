@@ -108,6 +108,16 @@ used to to show the country dial code and the phone number, you can click on the
     func isValidPhoneNumber() -> Bool
     ```
 
+6. Get National Phone Number:
+    ```swift
+    func getNationalPhoneNumber() -> String
+    ```
+
+7. Get dial code:
+    ```swift
+    func getDialCode() -> String
+    ```
+    
 #### Public Properties:
 1. delegate : Picker Delegate
 2. dataSourceDelegate: Data Source Delegate

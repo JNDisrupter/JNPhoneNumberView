@@ -213,12 +213,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 57M378XZD9;
+						DevelopmentTeam = 243T5L9MQG;
 						LastSwiftMigration = 1030;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 57M378XZD9;
+						DevelopmentTeam = 243T5L9MQG;
 						LastSwiftMigration = 1030;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -471,7 +471,7 @@
 			baseConfigurationReference = 67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57M378XZD9;
+				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,7 +487,7 @@
 			baseConfigurationReference = 56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57M378XZD9;
+				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -501,7 +501,7 @@
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 57M378XZD9;
+				DEVELOPMENT_TEAM = 243T5L9MQG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -522,7 +522,7 @@
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 57M378XZD9;
+				DEVELOPMENT_TEAM = 243T5L9MQG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

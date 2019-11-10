@@ -230,7 +230,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         self.textField.textColor = self.configuration.phoneNumberTitleColor
         
         // Set place holder
-        self.textField.placeholder = self.configuration.phoneNumberPlaceHolder
+        self.textField.attributedPlaceholder = self.configuration.phoneNumberAttributedPlaceHolder
     }
     
     /**
@@ -395,6 +395,26 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         
         // Return phone number
         return self.selectedCountry.dialCode+(self.textField.text ?? "")
+    }
+    
+    /**
+     Get National Phone Number
+     - Returns: national phone Number as string
+     */
+    @objc public func getNationalPhoneNumber() -> String {
+        
+        // Return phone number
+        return self.textField.text ?? ""
+    }
+    
+    /**
+     Get dial code
+     - Returns: dial code as string
+     */
+    @objc public func getDialCode() -> String {
+        
+        // Return dial code
+        return self.selectedCountry.dialCode
     }
 }
 

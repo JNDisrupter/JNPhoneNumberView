@@ -24,7 +24,7 @@ import UIKit
     @objc public var phoneNumberTitleFont: UIFont
     
     /// Phone number place holder
-    @objc public var phoneNumberPlaceHolder: String
+    @objc public var phoneNumberAttributedPlaceHolder: NSAttributedString
     
     /// left ToolBar BarButtonItem Title
     @objc public var leftToolBarBarButtonItemTitle: String
@@ -40,6 +40,6 @@ import UIKit
         self.countryDialCodeTitleColor = UIColor.black
         self.phoneNumberTitleColor = UIColor.black
         self.leftToolBarBarButtonItemTitle = "Done"
-        self.phoneNumberPlaceHolder = ""
+        self.phoneNumberAttributedPlaceHolder = NSAttributedString()
     }
 }

@@ -318,6 +318,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             
             // Init navigation controller and present it
             let navigationController = UINavigationController(rootViewController: countriesPickerViewController)
+            navigationController.navigationBar.isTranslucent = false
             presenterViewController.present(navigationController, animated: true, completion: nil)
         }
     }

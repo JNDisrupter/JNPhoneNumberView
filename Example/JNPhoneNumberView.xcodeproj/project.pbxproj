@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		182DC8D3793B0F097BCE2248 /* Pods_JNPhoneNumberView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPhoneNumberView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		273CACDB46D1A1E7F68824D9 /* Pods-JNPhoneNumberView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.release.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.release.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JNPhoneNumberView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPhoneNumberView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		91E60486234F6D2A005C0D34 /* JNCountryPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNCountryPickerExample.swift; sourceTree = "<group>"; };
 		91E60488234F8511005C0D34 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		91E60489234F8511005C0D34 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AE62F1AD025C37992E646367 /* Pods-JNPhoneNumberView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.debug.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C32EEB52A76A2D843A529246 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DD5901FA5494E3B101659119 /* Pods_JNPhoneNumberView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPhoneNumberView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AD151A87D5AD7E815D6F9A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -77,7 +79,8 @@
 				67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */,
 				56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */,
 			);
-			path = Pods;
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -87,8 +90,8 @@
 				607FACD21AFB9204008FA782 /* Example for JNPhoneNumberView */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				121009708E99783F46319E3E /* Pods */,
 				CD0D113101B66FEC355B8FEE /* Frameworks */,
+				E20CA582C5EC0BA9A6AEA156 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +140,7 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				121009708E99783F46319E3E /* Pods */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -159,6 +163,16 @@
 				182DC8D3793B0F097BCE2248 /* Pods_JNPhoneNumberView_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E20CA582C5EC0BA9A6AEA156 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE62F1AD025C37992E646367 /* Pods-JNPhoneNumberView_Example.debug.xcconfig */,
+				273CACDB46D1A1E7F68824D9 /* Pods-JNPhoneNumberView_Example.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -188,6 +188,7 @@ used to to show the countries list and select one of the countries, this view co
     - ***tableCellInsets*** Cell margins.    
     - ***tableCellCornerRaduis*** Cell corner raduis.
     - ***tableCellBackgroundColor*** Cell background color.
+    - ***showDialCode***  Show country dial code to appear after  country name.
 
 #### Public Properties:
 

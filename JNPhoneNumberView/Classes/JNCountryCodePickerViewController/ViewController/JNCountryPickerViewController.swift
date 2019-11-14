@@ -39,6 +39,17 @@ import UIKit
     /// Refresh control
     private(set) var refreshControl: UIRefreshControl!
     
+    // Is presented modally
+    private var isPresentedModally: Bool {
+        
+        // Pushed
+        if let navigationController = self.navigationController, navigationController.viewControllers.count > 1 {
+            return false
+        }
+        
+        return true
+    }
+    
     /**
     Load View
      */
@@ -69,7 +80,7 @@ import UIKit
         // Setup Search View
         self.setupSearchView()
         
-        // Setup Navigation Bar
+        // Set up navigation bar and items
         self.setupNavigationBar()
         
         // Setup table view cell
@@ -80,9 +91,6 @@ import UIKit
         
         // Setup Select Bar Button
         self.setupSelectBarButtonItem()
-        
-        // Setup Close Bar Button Item
-        self.setupCloseBarButtonItem()
         
         // Load data
         self.loadData()
@@ -118,13 +126,20 @@ import UIKit
      */
     private func setupNavigationBar() {
         
-        // Set naviation bar colors
-        self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
-        self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
-        self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
-        
         // set title
         self.title = self.pickerConfiguration.navigationBarTitle
+        
+        // If presented.
+        if self.isPresentedModally {
+            
+            // Set naviation bar colors
+            self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
+            self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
+            self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
+            
+            // Set left bar button item
+            self.setupCloseBarButtonItem()
+        }
     }
     
     
@@ -222,7 +237,11 @@ import UIKit
         self.delegate?.countryPickerViewController(didSelectCountry: selectedItem)
         
         // Dismiss view controller
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        if self.isPresentedModally {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     /**

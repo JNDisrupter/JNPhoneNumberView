@@ -194,8 +194,8 @@ class JNCountryPickerViewModel {
                 }
             }
             
-            // Title
-            let title = item.name + " ( " + item.dialCode + " )"
+            // Title, add dial code
+            let title = item.name + (self.pickerAttributes.showDialCode ? " ( " + item.dialCode + " )" : "")
             
             
             // Init representable

@@ -92,6 +92,9 @@ import UIKit
     /// Table cell background color
     @objc public var tableCellBackgroundColor: UIColor
     
+    /// Show dial code
+    @objc public var showDialCode: Bool
+    
     /**
      Initializer
      */
@@ -118,5 +121,6 @@ import UIKit
         self.tableCellCornerRaduis = 0.0
         self.tableCellBackgroundColor = UIColor.white
         self.navigationBarTitleTextAttributes = [:]
+        self.showDialCode = true
     }
 }

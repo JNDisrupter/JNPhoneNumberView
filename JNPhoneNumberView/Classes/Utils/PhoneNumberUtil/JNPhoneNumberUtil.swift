@@ -58,7 +58,7 @@ import libPhoneNumber_iOS
             let dialCode = phoneNumberUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
             
             // Check if dial code or national phone number not detected
-            if (dialCode?.description ?? "").isEmpty {
+            if (dialCode?.description ?? "").isEmpty  || nationalNumber == nil {
                 return  nil
             }
             

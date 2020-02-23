@@ -53,13 +53,13 @@ class CountryUtil {
     
     /**
      Generate Country Code
-     - Parameter dialCode: dial code as string
+     - Parameter phoneNumber: phone number as NBPhoneNumber
      - Returns: Country as JNCountry
      */
-    class func generateCountryCode(for dialCode: String) -> JNCountry? {
+    class func generateCountryCode(for phoneNumber: NBPhoneNumber) -> JNCountry? {
         
         // Modified dial code
-        var modifiedDialCode = dialCode
+        var modifiedDialCode = phoneNumber.countryCode.description
         
         // Check if the first character is "+"
         if modifiedDialCode.first == "+" {
@@ -73,17 +73,32 @@ class CountryUtil {
         let phoneNumberUtil = NBPhoneNumberUtil()
         
         // Country code
-        if let countryCode = phoneNumberUtil.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber)) {
+        var generatedRegionCode: String?
+        
+        // Get region code
+        if let regionCode = phoneNumberUtil.getRegionCode(for: phoneNumber) {
             
-            // Init and fill country code
-            let country = Country()
-            country.code = countryCode
-            country.dialCode = "+" + modifiedDialCode
+            generatedRegionCode = regionCode
+        }
             
-            // Return country
-            return country
+            // Country code
+        else if let countryCode = phoneNumberUtil.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber)) {
+            
+            generatedRegionCode = countryCode
         }
         
-        return nil
+        // Init and fill country code
+        var country: JNCountry?
+        
+        // Check region code
+        if let generatedRegionCode = generatedRegionCode {
+            
+            // Init and fill country code
+            country = Country()
+            country!.code = generatedRegionCode
+            country!.dialCode = "+" + modifiedDialCode
+        }
+        
+        return country
     }
 }

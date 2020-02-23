@@ -153,7 +153,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: self.selectedCountry.code) {
                 
                 // Adjust selected country
-                self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber.countryCode.description)
+                self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber)
                 
                 // Setup country code button
                 self.setupCountyLabels()

@@ -25,7 +25,7 @@ import libPhoneNumber_iOS
         
         // Parse phone number
         if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
-            return phoneNumberUtil.isValidNumber(parsedPhoneNumber)
+            return (phoneNumberUtil.isValidNumber(parsedPhoneNumber) && phoneNumberUtil.isValidNumber(forRegion: parsedPhoneNumber, regionCode: defaultRegion))
         }
         
         return false
@@ -53,7 +53,7 @@ import libPhoneNumber_iOS
             
             // National number
             var nationalNumber: NSString? = nil
-              
+            
             // Dial code
             let dialCode = phoneNumberUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
             

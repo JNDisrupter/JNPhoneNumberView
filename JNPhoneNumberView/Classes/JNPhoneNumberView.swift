@@ -381,7 +381,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @objc public func isValidPhoneNumber() -> Bool {
         
         // Is phone number valid
-        let isValidPhoneNumber = JNPhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.dialCode)
+        let isValidPhoneNumber = JNPhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.code)
         
         return isValidPhoneNumber
     }
@@ -416,6 +416,16 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         
         // Return dial code
         return self.selectedCountry.dialCode
+    }
+    
+    /**
+     Get selected country
+     - Returns: country as JNCountry
+     */
+    @objc public func getSelectedCountry() -> JNCountry {
+        
+        // Return dial code
+        return self.selectedCountry
     }
 }
 

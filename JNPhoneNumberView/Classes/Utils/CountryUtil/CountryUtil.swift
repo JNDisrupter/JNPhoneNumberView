@@ -10,14 +10,14 @@ import Foundation
 import libPhoneNumber_iOS
 
 /// Country Util
-class CountryUtil {
+public class CountryUtil {
     
     /**
      Generate Flag
      - Parameter countryCode: country code
      - Returns: flag as string
      */
-    class func generateFlag(from countryCode: String) -> String {
+    public class func generateFlag(from countryCode: String) -> String {
         let base : UInt32 = 127397
         var s = ""
         for uincodeScalar in countryCode.uppercased().unicodeScalars {
@@ -31,7 +31,7 @@ class CountryUtil {
      - Parameter regionCode: region code as string
      - Returns: Country as JNCountry
      */
-    class func generateDialCode(for regionCode: String) -> JNCountry? {
+    public class func generateDialCode(for regionCode: String) -> JNCountry? {
         
         // Init meta data helper
         let metaDataHelper = NBMetadataHelper()
@@ -56,7 +56,7 @@ class CountryUtil {
      - Parameter phoneNumber: phone number as NBPhoneNumber
      - Returns: Country as JNCountry
      */
-    class func generateCountryCode(for phoneNumber: NBPhoneNumber) -> JNCountry? {
+    public class func generateCountryCode(for phoneNumber: NBPhoneNumber) -> JNCountry? {
         
         // Modified dial code
         var modifiedDialCode = phoneNumber.countryCode.description

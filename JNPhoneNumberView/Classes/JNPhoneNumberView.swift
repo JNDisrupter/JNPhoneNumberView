@@ -111,6 +111,11 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
      */
     @objc public func setDefaultCountryCode(_ defaultCountryCode: String) {
         
+        // Do nothing if the default region code is empty
+        guard !defaultCountryCode.isEmpty else {
+            return
+        }
+        
         // Set selected country
         self.selectedCountry = JNCountryUtil.generateDialCode(for: defaultCountryCode)
         

@@ -1,5 +1,5 @@
 //
-//  CountryUtil.swift
+//  JNCountryUtil.swift
 //  CountryPicker
 //
 //  Created by Hamzawy Khanfar on 06/10/2019.
@@ -9,7 +9,7 @@
 import Foundation
 import libPhoneNumber_iOS
 
-/// Country Util
+/// JN Country Util
 public class JNCountryUtil {
     
     /**

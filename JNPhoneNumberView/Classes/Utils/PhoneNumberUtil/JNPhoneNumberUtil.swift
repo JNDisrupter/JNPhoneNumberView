@@ -25,6 +25,12 @@ import libPhoneNumber_iOS
         
         // Parse phone number
         if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
+            
+            // Check if region code is empty
+            if defaultRegion.isEmpty {
+                return phoneNumberUtil.isValidNumber(parsedPhoneNumber)
+            }
+            
             return (phoneNumberUtil.isValidNumber(parsedPhoneNumber) && phoneNumberUtil.isValidNumber(forRegion: parsedPhoneNumber, regionCode: defaultRegion))
         }
         

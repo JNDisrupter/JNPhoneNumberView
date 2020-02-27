@@ -10,7 +10,7 @@ import Foundation
 import libPhoneNumber_iOS
 
 /// Country Util
-public class CountryUtil {
+public class JNCountryUtil {
     
     /**
      Generate Flag

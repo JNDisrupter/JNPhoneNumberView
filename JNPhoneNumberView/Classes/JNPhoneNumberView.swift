@@ -89,11 +89,11 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if let countryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
             
             // Set selected country
-            self.selectedCountry = CountryUtil.generateDialCode(for: countryCode)
+            self.selectedCountry = JNCountryUtil.generateDialCode(for: countryCode)
         } else {
             
             // Set selected country as US
-            self.selectedCountry = CountryUtil.generateDialCode(for: "US")
+            self.selectedCountry = JNCountryUtil.generateDialCode(for: "US")
         }
         
         // Setup toolbar
@@ -112,7 +112,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @objc public func setDefaultCountryCode(_ defaultCountryCode: String) {
         
         // Set selected country
-        self.selectedCountry = CountryUtil.generateDialCode(for: defaultCountryCode)
+        self.selectedCountry = JNCountryUtil.generateDialCode(for: defaultCountryCode)
         
         // Setup country code button
         self.setupCountyLabels()
@@ -153,7 +153,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: self.selectedCountry.code) {
                 
                 // Adjust selected country
-                self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber)
+                self.selectedCountry = JNCountryUtil.generateCountryCode(for: parsedPhoneNumber)
                 
                 // Setup country code button
                 self.setupCountyLabels()
@@ -186,7 +186,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if let countryCode = self.selectedCountry {
             
             // Init flag
-            let flag = CountryUtil.generateFlag(from: countryCode.code)
+            let flag = JNCountryUtil.generateFlag(from: countryCode.code)
             
             // Build flag attributes
             var flagAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : self.configuration.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor]

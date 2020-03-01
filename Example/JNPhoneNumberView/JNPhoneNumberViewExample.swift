@@ -64,23 +64,24 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
     
     /**
      Did change text
-     - Parameter text: New text.
-     - Parameter cellIndex: Cell index
+     - Parameter nationalNumber: National phone number
+     - Parameter country: Number country info
      */
-    func phoneNumberView(didChangeText text: String) {
-        self.phoneNumberLabel.text = "International Phone Number: \n \(text)"
+    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry) {
+        self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getDialCode() + nationalNumber)"
     
         self.phoneNumberView.setViewConfiguration(self.getConfigration())
     }
     
     /**
      Did end editing
-     - Parameter text: New text.
-     - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     - Parameter nationalNumber: National phone number
+     - Parameter country: Number country info
+     - Parameter isValidPhoneNumber:  Is valid phone number flag as bool
      */
-    func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool) {
+    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool) {
         let validationMessage = isValidPhoneNumber ? "Valid Phone Number" : "Invalid Phone Number"
-        self.phoneNumberLabel.text = "International Phone Number: \n \(text) \n \(validationMessage)"
+        self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getDialCode() + nationalNumber) \n \(validationMessage)"
         
         self.phoneNumberLabel.textColor = isValidPhoneNumber ? UIColor.blue : UIColor.red
     }

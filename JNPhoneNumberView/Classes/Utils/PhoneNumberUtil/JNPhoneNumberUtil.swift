@@ -45,13 +45,25 @@ import libPhoneNumber_iOS
      */
     @objc public class func parsePhoneNumber(_ phoneNumber: String, defaultRegion: String) -> NBPhoneNumber? {
         
+        // Modified phone number
+        var modifiedPhoneNumber = phoneNumber
+        
+        // Check prefix
+        if modifiedPhoneNumber.prefix(2) == "00" {
+            
+            // remove zeros prefix
+            modifiedPhoneNumber.removeSubrange(modifiedPhoneNumber.startIndex...modifiedPhoneNumber.index(modifiedPhoneNumber.startIndex, offsetBy: 1))
+            
+            modifiedPhoneNumber = "+"+modifiedPhoneNumber
+        }
+        
         // Init phone number util
         let phoneNumberUtil = NBPhoneNumberUtil()
         
         // Parse phone number
         do {
             // Parse phone number
-            let phoneNumber = try phoneNumberUtil.parse(phoneNumber, defaultRegion: defaultRegion)
+            let phoneNumber = try phoneNumberUtil.parse(modifiedPhoneNumber, defaultRegion: defaultRegion)
             
             // Return phone number
             return phoneNumber
@@ -61,7 +73,7 @@ import libPhoneNumber_iOS
             var nationalNumber: NSString? = nil
             
             // Dial code
-            let dialCode = phoneNumberUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
+            let dialCode = phoneNumberUtil.extractCountryCode(modifiedPhoneNumber, nationalNumber: &nationalNumber)
             
             // Check if dial code or national phone number not detected
             if (dialCode?.description ?? "").isEmpty  || nationalNumber == nil {

@@ -54,14 +54,14 @@ used to to show the country dial code and the phone number, you can click on the
         func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
         ```
     
-     -  Did change text:
+     -  Did change text with new national phone number and selected country:
         ```swift
-        func phoneNumberView(didChangeText text: String)
+        func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry)
         ``` 
      
-     -  Did end Editing with bool value indicate if the phone number is valid:
+     -  Did end editing with bool value indicate if the phone number is valid, new national phone number and selected country:
         ```swift
-        func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
+        func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool)
         ``` 
         
      -  Selected Country did changed with bool value indicate if the phone number is valid:
@@ -99,21 +99,25 @@ used to to show the country dial code and the phone number, you can click on the
     ```swift
     func setPhoneNumber(phoneNumber: String)
     ```
-4. Get phone number from JNPhoneNumberView:
+4.  Set phone number from national number and country: 
+    ```swift
+    func setPhoneNumber(nationalNumber: String, preferredRegionCode: String)
+    ```
+5. Get phone number from JNPhoneNumberView:
     ```swift
     func getPhoneNumber() -> String 
     ```
- 5. Is phone number valid:
+ 6. Is phone number valid:
     ```swift
     func isValidPhoneNumber() -> Bool
     ```
 
-6. Get National Phone Number:
+7. Get National Phone Number:
     ```swift
     func getNationalPhoneNumber() -> String
     ```
 
-7. Get dial code:
+8. Get dial code:
     ```swift
     func getDialCode() -> String
     ```

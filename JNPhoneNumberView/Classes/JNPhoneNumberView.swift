@@ -89,11 +89,11 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if let countryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
             
             // Set selected country
-            self.selectedCountry = CountryUtil.generateDialCode(for: countryCode)
+            self.selectedCountry = JNCountryUtil.generateDialCode(for: countryCode)
         } else {
             
             // Set selected country as US
-            self.selectedCountry = CountryUtil.generateDialCode(for: "US")
+            self.selectedCountry = JNCountryUtil.generateDialCode(for: "US")
         }
         
         // Setup toolbar
@@ -111,8 +111,13 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
      */
     @objc public func setDefaultCountryCode(_ defaultCountryCode: String) {
         
+        // Do nothing if the default region code is empty
+        guard !defaultCountryCode.isEmpty else {
+            return
+        }
+        
         // Set selected country
-        self.selectedCountry = CountryUtil.generateDialCode(for: defaultCountryCode)
+        self.selectedCountry = JNCountryUtil.generateDialCode(for: defaultCountryCode)
         
         // Setup country code button
         self.setupCountyLabels()
@@ -153,7 +158,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             if let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: self.selectedCountry.code) {
                 
                 // Adjust selected country
-                self.selectedCountry = CountryUtil.generateCountryCode(for: parsedPhoneNumber)
+                self.selectedCountry = JNCountryUtil.generateCountryCode(for: parsedPhoneNumber)
                 
                 // Setup country code button
                 self.setupCountyLabels()
@@ -175,6 +180,30 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         }
     }
     
+    /**
+     Set national number
+     - Parameter nationalNumber: national number as string
+     - Parameter preferredRegionCode: region code as string
+     */
+    @objc public func setPhoneNumber(nationalNumber: String, preferredRegionCode: String) {
+            
+        // Set phone number
+        if let nationalNumber = Double(nationalNumber) {
+            
+            // Check if number positive
+            if nationalNumber > 0 {
+                self.textField.text = nationalNumber.description
+            } else {
+                self.textField.text = ""
+            }
+        } else {
+            self.textField.text = nationalNumber
+        }
+        
+        // Set default country from code
+        self.setDefaultCountryCode(preferredRegionCode)
+    }
+    
     // MARK: - Setup
     
     /**
@@ -186,7 +215,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if let countryCode = self.selectedCountry {
             
             // Init flag
-            let flag = CountryUtil.generateFlag(from: countryCode.code)
+            let flag = JNCountryUtil.generateFlag(from: countryCode.code)
             
             // Build flag attributes
             var flagAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : self.configuration.countryDialCodeTitleFont, NSAttributedString.Key.foregroundColor : self.configuration.countryDialCodeTitleColor]
@@ -360,7 +389,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         
         // Call delegate
-        self.delegate?.phoneNumberView(didEndEditing: self.getPhoneNumber(), isValidPhoneNumber: self.isValidPhoneNumber())
+        self.delegate?.phoneNumberView(didEndEditing: (self.textField.text ?? ""), country: self.selectedCountry, isValidPhoneNumber: self.isValidPhoneNumber())
     }
     
     /**
@@ -369,7 +398,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @IBAction func textFieldDidChangeText(_ sender: Any) {
         
         // Call delegate
-        self.delegate?.phoneNumberView(didChangeText: self.getPhoneNumber())
+        self.delegate?.phoneNumberView(didChangeText: (self.textField.text ?? ""), country: self.selectedCountry)
     }
     
     // MARK: - Validation
@@ -381,7 +410,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @objc public func isValidPhoneNumber() -> Bool {
         
         // Is phone number valid
-        let isValidPhoneNumber = JNPhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.dialCode)
+        let isValidPhoneNumber = JNPhoneNumberUtil.isPhoneNumberValid(phoneNumber: self.getPhoneNumber(), defaultRegion: self.selectedCountry.code)
         
         return isValidPhoneNumber
     }
@@ -416,6 +445,16 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         
         // Return dial code
         return self.selectedCountry.dialCode
+    }
+    
+    /**
+     Get selected country
+     - Returns: country as JNCountry
+     */
+    @objc public func getSelectedCountry() -> JNCountry {
+        
+        // Return dial code
+        return self.selectedCountry
     }
 }
 
@@ -487,17 +526,18 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
     
     /**
      Did change text
-     - Parameter text: New text.
-     - Parameter cellIndex: Cell index
+     - Parameter nationalNumber: National phone number
+     - Parameter country: Number country info
      */
-    func phoneNumberView(didChangeText text: String)
+    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry)
     
     /**
      Did end editing
-     - Parameter text: New text.
-     - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     - Parameter nationalNumber: National phone number
+     - Parameter country: Number country info
+     - Parameter isValidPhoneNumber:  Is valid phone number flag as bool
      */
-    func phoneNumberView(didEndEditing text: String, isValidPhoneNumber: Bool)
+    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool)
     
     /**
      Country Did Changed

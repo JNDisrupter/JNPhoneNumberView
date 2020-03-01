@@ -171,7 +171,6 @@
 				AE62F1AD025C37992E646367 /* Pods-JNPhoneNumberView_Example.debug.xcconfig */,
 				273CACDB46D1A1E7F68824D9 /* Pods-JNPhoneNumberView_Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -485,6 +484,7 @@
 			baseConfigurationReference = 67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = "⁨⁨⁨⁨";
 				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -501,6 +501,7 @@
 			baseConfigurationReference = 56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = "⁨⁨⁨⁨";
 				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

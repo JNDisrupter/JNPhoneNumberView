@@ -199,7 +199,7 @@ class JNCountryPickerViewModel {
             
             
             // Init representable
-            let countryRepresentable = JNCountryPickerTableViewCellRepresentable(flag: CountryUtil.generateFlag(from: item.code),title: title, isSelected: isSelected,
+            let countryRepresentable = JNCountryPickerTableViewCellRepresentable(flag: JNCountryUtil.generateFlag(from: item.code),title: title, isSelected: isSelected,
                                                                                  
                                                                                  selectedCountryNameAttributes:
                 [NSAttributedString.Key.foregroundColor : self.pickerAttributes.selectedTitleColor, NSAttributedString.Key.font : self.pickerAttributes.selectedTitleFont]

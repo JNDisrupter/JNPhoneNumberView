@@ -89,8 +89,20 @@ import libPhoneNumber_iOS
             // Check if national number not empty
             if nationalNumber!.length > 0 {
                 
-                // Convert national number from string to number
-                let nationalPhoneNumber = NSNumber(value: nationalNumber!.floatValue)
+                // Convert NSString To String
+                let stringNationalNumber: String = nationalNumber! as String
+                
+               // National Phone Number
+                var nationalPhoneNumber: NSNumber
+                
+                if let integerValue = Int64(stringNationalNumber) {
+                    // Convert national number from string to NSNumber
+                     nationalPhoneNumber = NSNumber(value: integerValue)
+                }else{
+                     // Convert national number from NSString to NSNumber
+                    nationalPhoneNumber = NSNumber(value: nationalNumber!.floatValue)
+                }
+          
                 
                 // set national number
                 nbPhoneNumber.nationalNumber = nationalPhoneNumber

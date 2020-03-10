@@ -191,7 +191,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         if let nationalNumber = Double(nationalNumber) {
             
             // Check if number positive
-            if nationalNumber > 0 {
+            if nationalNumber >= 0 {
                 self.textField.text = Int(nationalNumber).description
             } else {
                 self.textField.text = ""

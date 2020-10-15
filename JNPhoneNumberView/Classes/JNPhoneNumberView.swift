@@ -142,13 +142,20 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         // Modified phone number
         var modifiedPhoneNumber = phoneNumber
         
+        // Substring to allowed maximum index
+        if modifiedPhoneNumber.count > self.configuration.maximumNumbrOfDigits {
+            let index = modifiedPhoneNumber.index(modifiedPhoneNumber.startIndex, offsetBy: self.configuration.maximumNumbrOfDigits)
+            let validSubString = modifiedPhoneNumber.prefix(upTo: index)
+            modifiedPhoneNumber = String(validSubString)
+        }
+        
         // Check prefix
         if modifiedPhoneNumber.prefix(2) == "00" {
             
             // remove zeros prefix
             modifiedPhoneNumber.removeSubrange(modifiedPhoneNumber.startIndex...modifiedPhoneNumber.index(modifiedPhoneNumber.startIndex, offsetBy: 1))
             
-            modifiedPhoneNumber = "+"+modifiedPhoneNumber
+            modifiedPhoneNumber = "+" + modifiedPhoneNumber
         }
         
         // Check if the first digit not equal '+'
@@ -164,7 +171,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
                 self.setupCountyLabels()
                 
                 // Set phone number
-                self.textField.text = parsedPhoneNumber.nationalNumber.intValue >= 0 ? parsedPhoneNumber.nationalNumber.description : ""
+                self.textField.text = parsedPhoneNumber.nationalNumber.uint64Value >= 0 ? parsedPhoneNumber.nationalNumber.description : ""
             } else {
                 
                 // remove the "+" and use it as local number
@@ -186,16 +193,18 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
      - Parameter preferredRegionCode: region code as string
      */
     @objc public func setPhoneNumber(nationalNumber: String, preferredRegionCode: String) {
-            
+        var nationalNumber = nationalNumber
+        
+        // Substring to allowed maximum index
+        if nationalNumber.count > self.configuration.maximumNumbrOfDigits {
+            let index = nationalNumber.index(nationalNumber.startIndex, offsetBy: self.configuration.maximumNumbrOfDigits)
+            let validSubString = nationalNumber.prefix(upTo: index)
+            nationalNumber = String(validSubString)
+        }
+        
         // Set phone number
-        if let nationalNumber = Double(nationalNumber) {
-            
-            // Check if number positive
-            if nationalNumber >= 0 {
-                self.textField.text = Int(nationalNumber).description
-            } else {
-                self.textField.text = ""
-            }
+        if let nationalNumber = UInt64(nationalNumber) {
+            self.textField.text = nationalNumber.description
         } else {
             self.textField.text = nationalNumber
         }
@@ -374,11 +383,27 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             
             let allowedCharacters = CharacterSet.decimalDigits
             let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
+            if allowedCharacters.isSuperset(of: characterSet) {
+                
+                // Modified phone number
+                if let textFieldString = textField.text {
+                    
+                    // Trying to delete
+                    if string.isEmpty {
+                        return true
+                    }
+                    
+                    // Trying to add
+                    return (textFieldString.count + string.count) < self.configuration.maximumNumbrOfDigits
+                } else {
+                    return string.count < self.configuration.maximumNumbrOfDigits
+                }
+            }
             
+            return false
         } else if string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty && (textField.text?.isEmpty)! {
             return false
-        } else{
+        } else {
             return true
         }
     }

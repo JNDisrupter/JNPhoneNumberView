@@ -29,6 +29,15 @@ import UIKit
     /// left ToolBar BarButtonItem Title
     @objc public var leftToolBarBarButtonItemTitle: String
     
+    /// Maximum number of digits
+    @objc public var maximumNumbrOfDigits: Int {
+        didSet {
+            if maximumNumbrOfDigits < 0 {
+                maximumNumbrOfDigits = 30
+            }
+        }
+    }
+    
     /**
      Initiailzer
      */
@@ -41,5 +50,6 @@ import UIKit
         self.phoneNumberTitleColor = UIColor.black
         self.leftToolBarBarButtonItemTitle = "Done"
         self.phoneNumberAttributedPlaceHolder = NSAttributedString()
+        self.maximumNumbrOfDigits = 30
     }
 }

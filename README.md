@@ -84,7 +84,7 @@ used to to show the country dial code and the phone number, you can click on the
      - ***phoneNumberTitleFont:*** Font for phone number textfield.
      - ***phoneNumberPlaceHolder:*** Place hodler for phone number textfield.
      - ***leftToolBarBarButtonItemTitle:*** Title for Tool BarBar ButtonItem that appear of Keyboard.
-        
+     - ***maximumNumbrOfDigits:***  Maximum number of digits allowed to add. the defualt value is 30 digit
 
 #### Public Methods:
 1. Set a default country using this method, you just have to pass a country code such as "US", "PS":

@@ -117,7 +117,9 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
         }
         
         // Set selected country
-        self.selectedCountry = JNCountryUtil.generateDialCode(for: defaultCountryCode)
+        if let country = JNCountryUtil.generateDialCode(for: defaultCountryCode) {
+            self.selectedCountry = country
+        }
         
         // Setup country code button
         self.setupCountyLabels()

@@ -69,46 +69,7 @@ import libPhoneNumber_iOS
             return phoneNumber
         } catch {
             
-            // National number
-            var nationalNumber: NSString? = nil
-            
-            // Dial code
-            let dialCode = phoneNumberUtil.extractCountryCode(modifiedPhoneNumber, nationalNumber: &nationalNumber)
-            
-            // Check if dial code or national phone number not detected
-            if (dialCode?.description ?? "").isEmpty  || nationalNumber == nil {
-                return  nil
-            }
-            
-            // Create phone number object
-            let nbPhoneNumber = NBPhoneNumber()
-            
-            // Set dial code
-            nbPhoneNumber.countryCode = dialCode
-            
-            // Check if national number not empty
-            if nationalNumber!.length > 0 {
-                
-                // Convert NSString To String
-                let stringNationalNumber: String = nationalNumber! as String
-                
-               // National Phone Number
-                var nationalPhoneNumber: NSNumber
-                
-                if let integerValue = Int64(stringNationalNumber) {
-                    // Convert national number from string to NSNumber
-                     nationalPhoneNumber = NSNumber(value: integerValue)
-                }else{
-                     // Convert national number from NSString to NSNumber
-                    nationalPhoneNumber = NSNumber(value: nationalNumber!.floatValue)
-                }
-          
-                
-                // set national number
-                nbPhoneNumber.nationalNumber = nationalPhoneNumber
-            }
-            
-            return nbPhoneNumber
+            return  nil
         }
     }
 }

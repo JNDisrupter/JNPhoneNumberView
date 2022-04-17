@@ -45,9 +45,10 @@ class JNCountryPickerExample: UIViewController, JNCountryPickerViewControllerDel
     
     /**
      Did Select Country
+     - Parameter controller: JN Country Picker ViewController
      - Parameter country: country as JNCountry.
      */
-    func countryPickerViewController(didSelectCountry country: JNCountry) {
+     func countryPickerViewController(_ controller: JNCountryPickerViewController, didSelectCountry country: JNCountry) {
         
         // update Selected Country
         self.selectedCountry = country
@@ -55,7 +56,13 @@ class JNCountryPickerExample: UIViewController, JNCountryPickerViewControllerDel
         self.selectedCountryInfoLabel.text = " Country Name: \(country.name) \n Country Dial Code: \(country.dialCode)  \n Country Code: \(country.code)"
     }
     
-    func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void, errorCompletion: (NSError) -> Void) {
+    /**
+     Load country list
+     - Parameter controller: JN Country Picker ViewController
+     - Parameter completion: completion block
+     - Parameter errorCompletion: errorCompletion
+     */
+    func countryPickerViewControllerLoadCountryList(_ controller: JNCountryPickerViewController, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void) {
         completion([])
     }
 }

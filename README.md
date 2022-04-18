@@ -46,34 +46,34 @@ used to to show the country dial code and the phone number, you can click on the
      - Presenter View Controller to be used for presenting the Country list picker:
         
           ```swift
-          func phoneNumberViewGetPresenterViewController() -> UIViewController
+          func phoneNumberView(getPresenterViewControllerFor phoneNumberView: JNPhoneNumberView) -> UIViewController
           ```
         
      - Get Country picker configuration:
         ```swift
-        func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
+        func phoneNumberView(getCountryPickerAttributesFor phoneNumberView: JNPhoneNumberView) -> JNCountryPickerConfiguration
         ```
     
      -  Did change text with new national phone number and selected country:
         ```swift
-        func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry)
+        func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
         ``` 
      
      -  Did end editing with bool value indicate if the phone number is valid, new national phone number and selected country:
         ```swift
-        func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool)
+        func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
         ``` 
         
      -  Selected Country did changed with bool value indicate if the phone number is valid:
         ```swift
-        func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool)
+        func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
         ``` 
 
 - #### Implement JNPhoneNumberViewDataSourceDelegate:
     Set dataSourceDelegate in your view controller if you want to provide a source with custom countries instead of using the our like the following:
 
     ```swift
-    func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
+    func countryPickerViewControllerLoadCountryList(_ phoneNumberView: JNPhoneNumberView, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
     ```
 - #### View Customization:
     We provide appearance customization using **JNPhoneNumberViewConfiguration** that has the following attributtes:
@@ -157,7 +157,7 @@ used to to show the countries list and select one of the countries, this view co
     
     - Did select Country
     ```swift
-    func countryPickerViewController(didSelectCountry country: JNCountry)
+    func countryPickerViewController(_ controller: JNCountryPickerViewController, didSelectCountry country: JNCountry)
     ```
     
 - ####  Implement JNPhoneNumberViewDataSourceDelegate:
@@ -166,7 +166,7 @@ used to to show the countries list and select one of the countries, this view co
 
     - Load country list from custom source
     ```swift
-    func countryPickerViewControllerLoadCountryList(completion: ([JNCountry]) -> Void)
+    func countryPickerViewControllerLoadCountryList(_ controller: JNCountryPickerViewController, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
     ```
     
 - #### View Customization:

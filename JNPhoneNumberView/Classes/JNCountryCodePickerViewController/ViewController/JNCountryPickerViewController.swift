@@ -132,10 +132,30 @@ import UIKit
         // If presented.
         if self.isPresentedModally {
             
-            // Set naviation bar colors
+            if #available(iOS 13.0, *) {
+                
+                // Setup appearance
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = self.pickerConfiguration.navigationBarColor
+                appearance.shadowImage = nil
+                appearance.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
+                
+                // Set scroll edge and standard appearance
+                self.navigationController?.navigationBar.scrollEdgeAppearance =  appearance
+                self.navigationController?.navigationBar.standardAppearance = appearance
+                
+            } else {
+                
+                // Setup custom navigation bar
+                self.navigationController?.navigationBar.shadowImage = nil
+                self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
+            }
+            
+            // Setup custom navigation bar
             self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
+            self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
-            self.navigationController?.navigationBar.titleTextAttributes = self.pickerConfiguration.navigationBarTitleTextAttributes
             
             // Set left bar button item
             self.setupCloseBarButtonItem()
@@ -234,7 +254,7 @@ import UIKit
         guard let selectedItem = self.viewModel.getSelectedItem() else { return }
         
         // call delegate did select country code
-        self.delegate?.countryPickerViewController(didSelectCountry: selectedItem)
+        self.delegate?.countryPickerViewController(self, didSelectCountry: selectedItem)
         
         // Dismiss view controller
         if self.isPresentedModally {
@@ -287,7 +307,7 @@ import UIKit
         if let dataSourceDelegate = self.dataSourceDelegate {
             
             // Call delegate
-            dataSourceDelegate.countryPickerViewControllerLoadCountryList(completion: { [weak self] countryList in
+            dataSourceDelegate.countryPickerViewControllerLoadCountryList(self, completion: { [weak self] countryList in
                 
                 // Check if empty
                 if countryList.isEmpty {
@@ -363,9 +383,10 @@ import UIKit
     
     /**
      Did Select Country
+     - Parameter controller: JN Country Picker ViewController
      - Parameter country: country as JNCountry.
      */
-    @objc func countryPickerViewController(didSelectCountry country: JNCountry)
+    @objc func countryPickerViewController(_ controller: JNCountryPickerViewController, didSelectCountry country: JNCountry)
 }
 
 /// JN Country Picker View Controller Delegate
@@ -373,8 +394,9 @@ import UIKit
     
     /**
      Load country list
+     - Parameter controller: JN Country Picker ViewController
      - Parameter completion: completion block
      - Parameter errorCompletion: errorCompletion
      */
-    @objc func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(_ controller: JNCountryPickerViewController, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
 }

@@ -43,16 +43,18 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
     
     /**
      Get presenter view controller
+     - Parameter phoneNumberView: Phone number view
      - Returns: presenter view controller
      */
-    func phoneNumberViewGetPresenterViewController() -> UIViewController {
+    func phoneNumberView(getPresenterViewControllerFor phoneNumberView: JNPhoneNumberView) -> UIViewController {
         return self
     }
     
     /**
      Get country code picker attributes
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration {
+    func phoneNumberView(getCountryPickerAttributesFor phoneNumberView: JNPhoneNumberView) -> JNCountryPickerConfiguration {
         let configuration = JNCountryPickerConfiguration()
         configuration.pickerLanguage = .en
         configuration.tableCellInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -66,8 +68,9 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      Did change text
      - Parameter nationalNumber: National phone number
      - Parameter country: Number country info
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry) {
+    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry, forPhoneNumberView phoneNumberView: JNPhoneNumberView) {
         self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getDialCode() + nationalNumber)"
     
         self.phoneNumberView.setViewConfiguration(self.getConfigration())
@@ -78,8 +81,9 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      - Parameter nationalNumber: National phone number
      - Parameter country: Number country info
      - Parameter isValidPhoneNumber:  Is valid phone number flag as bool
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool) {
+    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView) {
         let validationMessage = isValidPhoneNumber ? "Valid Phone Number" : "Invalid Phone Number"
         self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getDialCode() + nationalNumber) \n \(validationMessage)"
         
@@ -90,8 +94,9 @@ extension JNPhoneNumberViewExample: JNPhoneNumberViewDelegate {
      Country Did Changed
      - Parameter country: New Selected Country
      - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool) {
+    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView) {
         let validationMessage = isValidPhoneNumber ? "Valid Phone Number" : "Invalid Phone Number"
         self.phoneNumberLabel.text = "International Phone Number: \n \(self.phoneNumberView.getPhoneNumber()) \n \(validationMessage)"
         

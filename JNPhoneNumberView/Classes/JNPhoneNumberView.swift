@@ -342,7 +342,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             let countriesPickerViewController = JNCountryPickerViewController()
             
             // Set picker attributes
-            countriesPickerViewController.pickerConfiguration = delegate.phoneNumberViewGetCountryPickerAttributes()
+            countriesPickerViewController.pickerConfiguration = delegate.phoneNumberView(getCountryPickerAttributesFor: self)
             
             // Set data source delegate
             countriesPickerViewController.dataSourceDelegate = self
@@ -354,7 +354,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
             countriesPickerViewController.selectedCountry = self.selectedCountry
             
             // Presenter view controller
-            let presenterViewController = delegate.phoneNumberViewGetPresenterViewController()
+            let presenterViewController = delegate.phoneNumberView(getPresenterViewControllerFor: self)
             
             // Init navigation controller and present it
             let navigationController = UINavigationController(rootViewController: countriesPickerViewController)
@@ -416,7 +416,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         
         // Call delegate
-        self.delegate?.phoneNumberView(didEndEditing: (self.textField.text ?? ""), country: self.selectedCountry, isValidPhoneNumber: self.isValidPhoneNumber())
+        self.delegate?.phoneNumberView(didEndEditing: (self.textField.text ?? ""), country: self.selectedCountry, isValidPhoneNumber: self.isValidPhoneNumber(), forPhoneNumberView: self)
     }
     
     /**
@@ -425,7 +425,7 @@ public class JNPhoneNumberView: UIView, UITextFieldDelegate {
     @IBAction func textFieldDidChangeText(_ sender: Any) {
         
         // Call delegate
-        self.delegate?.phoneNumberView(didChangeText: (self.textField.text ?? ""), country: self.selectedCountry)
+        self.delegate?.phoneNumberView(didChangeText: (self.textField.text ?? ""), country: self.selectedCountry, forPhoneNumberView: self)
     }
     
     // MARK: - Validation
@@ -490,9 +490,10 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDelegate {
     
     /**
      Did Select Country
+     - Parameter controller: JN Country Picker ViewController
      - Parameter country: country as JNCountry.
      */
-    public func countryPickerViewController(didSelectCountry country: JNCountry) {
+    public func countryPickerViewController(_ controller: JNCountryPickerViewController, didSelectCountry country: JNCountry) {
         
         // Set selected country
         self.selectedCountry = country
@@ -501,7 +502,7 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDelegate {
         self.setupCountyLabels()
         
         // Call delegate
-        self.delegate?.phoneNumberView(countryDidChanged: country, isValidPhoneNumber: self.isValidPhoneNumber())
+        self.delegate?.phoneNumberView(countryDidChanged: country, isValidPhoneNumber: self.isValidPhoneNumber(), forPhoneNumberView: self)
     }
 }
 
@@ -509,17 +510,18 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDelegate {
 extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
     
     /**
-     Get country code list
+     Load country list
+     - Parameter controller: JN Country Picker ViewController
      - Parameter completion: completion block
-     - Parameter errorCompletion
+     - Parameter errorCompletion: errorCompletion
      */
-    public func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void) {
+    public func countryPickerViewControllerLoadCountryList(_ controller: JNCountryPickerViewController, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void) {
         
         // Data source delegate
         if let dataSourceDelegate = self.dataSourceDelegate {
             
             // Call phone view data source delegate
-            dataSourceDelegate.countryPickerViewControllerLoadCountryList(completion: { countryList in
+            dataSourceDelegate.countryPickerViewControllerLoadCountryList(self, completion: { countryList in
                 
                 // Call completion
                 completion(countryList)
@@ -542,36 +544,41 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
     
     /**
      Get presenter view controller
+     - Parameter phoneNumberView: Phone number view
      - Returns: presenter view controller
      */
-    func phoneNumberViewGetPresenterViewController() -> UIViewController
+    func phoneNumberView(getPresenterViewControllerFor phoneNumberView: JNPhoneNumberView) -> UIViewController
     
     /**
      Get country picker configuration
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberViewGetCountryPickerAttributes() -> JNCountryPickerConfiguration
+    func phoneNumberView(getCountryPickerAttributesFor phoneNumberView: JNPhoneNumberView) -> JNCountryPickerConfiguration
     
     /**
      Did change text
      - Parameter nationalNumber: National phone number
      - Parameter country: Number country info
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry)
+    func phoneNumberView(didChangeText nationalNumber: String, country: JNCountry, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
     
     /**
      Did end editing
      - Parameter nationalNumber: National phone number
      - Parameter country: Number country info
      - Parameter isValidPhoneNumber:  Is valid phone number flag as bool
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool)
+    func phoneNumberView(didEndEditing nationalNumber: String, country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
     
     /**
      Country Did Changed
      - Parameter country: New Selected Country
      - Parameter isValidPhoneNumber: Is valid phone number flag as bool
+     - Parameter phoneNumberView: Phone number view
      */
-    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool)
+    func phoneNumberView(countryDidChanged country: JNCountry, isValidPhoneNumber: Bool, forPhoneNumberView phoneNumberView: JNPhoneNumberView)
 }
 
 /// JN Phone Number View Delegate
@@ -579,8 +586,9 @@ extension JNPhoneNumberView: JNCountryPickerViewControllerDataSourceDelegate {
     
     /**
      Load country list
+     - Parameter phoneNumberView: Phone number view
      - Parameter completion: completion block
      - Parameter errorCompletion: errorCompletion
      */
-    @objc func countryPickerViewControllerLoadCountryList(completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
+    @objc func countryPickerViewControllerLoadCountryList(_ phoneNumberView: JNPhoneNumberView, completion: @escaping ([JNCountry]) -> Void, errorCompletion: @escaping (NSError) -> Void)
 }

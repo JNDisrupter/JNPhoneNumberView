@@ -154,10 +154,8 @@ import UIKit
             
             // Setup custom navigation bar
             self.navigationController?.navigationBar.barTintColor = self.pickerConfiguration.navigationBarColor
-            self.navigationController?.navigationBar.barStyle = UIBarStyle.black
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.tintColor = self.pickerConfiguration.naigationBarTintColor
-            self.navigationController?.navigationBar.barStyle = .black
             
             // Set left bar button item
             self.setupCloseBarButtonItem()

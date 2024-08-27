@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.license                     = { :type => "MIT", :file => "LICENSE" }
   s.author                      = { "Jayel Zaghmoutt" => "eng.jayel.z@gmail.com", "hamzakhanfar" => "ha.khanfer@gmail.com" }
   s.source                      = { :git => "https://github.com/JNDisrupter/JNPhoneNumberView.git", :tag => "#{s.version}" }
-  s.ios.deployment_target       = "9.0"
-  s.swift_version               = "5.0"
+  s.ios.deployment_target       = "12.0"
+  s.swift_version               = "5.10"
   s.source_files                = "JNPhoneNumberView/**/*.swift"
   s.resources                   = "JNPhoneNumberView/**/*.{png,pdf,jpeg,jpg,storyboard,xib,xcassets,ttf,json}"
   s.dependency "libPhoneNumber-iOS"

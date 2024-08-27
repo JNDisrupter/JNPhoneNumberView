@@ -37,7 +37,7 @@ import libPhoneNumber_iOS
         let metaDataHelper = NBMetadataHelper()
         
         // get meta data for specific region code
-        if let metaData = metaDataHelper.getMetadataForRegion(regionCode) {
+        if let metaData = metaDataHelper?.getMetadataForRegion(regionCode) {
             
             // Init and fill country code
             let country = Country()
@@ -70,19 +70,19 @@ import libPhoneNumber_iOS
         guard let dialCodeNumber = Int(modifiedDialCode) else { return nil }
         
         // Phone number util
-        let phoneNumberUtil = NBPhoneNumberUtil()
+        let phoneNumberUtil = NBPhoneNumberUtil.sharedInstance()
         
         // Country code
         var generatedRegionCode: String?
         
         // Get region code
-        if let regionCode = phoneNumberUtil.getRegionCode(for: phoneNumber) {
+        if let regionCode = phoneNumberUtil?.getRegionCode(for: phoneNumber) {
             
             generatedRegionCode = regionCode
         }
             
             // Country code
-        else if let countryCode = phoneNumberUtil.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber)) {
+        else if let countryCode = phoneNumberUtil?.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber)) {
             
             generatedRegionCode = countryCode
         }

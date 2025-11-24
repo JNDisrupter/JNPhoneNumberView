@@ -76,15 +76,19 @@ import libPhoneNumber_iOS
         var generatedRegionCode: String?
         
         // Get region code
-        if let regionCode = phoneNumberUtil?.getRegionCode(for: phoneNumber) {
+        if let regionCode = phoneNumberUtil.getRegionCode(for: phoneNumber) {
             
             generatedRegionCode = regionCode
         }
             
             // Country code
-        else if let countryCode = phoneNumberUtil?.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber)) {
+        else  {
             
-            generatedRegionCode = countryCode
+            // Get Country Code
+            let countryCode = phoneNumberUtil.getRegionCode(forCountryCode: NSNumber(value: dialCodeNumber))
+            if !countryCode.isEmpty {
+                generatedRegionCode = countryCode
+            }
         }
         
         // Init and fill country code

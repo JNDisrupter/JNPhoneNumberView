@@ -21,7 +21,10 @@ import libPhoneNumber_iOS
     @objc public class func isPhoneNumberValid(phoneNumber: String, defaultRegion: String) -> Bool {
         
         // Parse phone number
-        if  let phoneNumberUtil = NBPhoneNumberUtil.sharedInstance(), let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
+        if  let parsedPhoneNumber = JNPhoneNumberUtil.parsePhoneNumber(phoneNumber, defaultRegion: defaultRegion) {
+            
+            // PhoneNumber Util
+            let phoneNumberUtil = NBPhoneNumberUtil.sharedInstance()
             
             // Check if region code is empty
             if defaultRegion.isEmpty {
@@ -55,7 +58,7 @@ import libPhoneNumber_iOS
         }
         
         // Init phone number util
-        guard let phoneNumberUtil = NBPhoneNumberUtil.sharedInstance() else { return nil}
+        let phoneNumberUtil = NBPhoneNumberUtil.sharedInstance()
         
         // Parse phone number
         do {

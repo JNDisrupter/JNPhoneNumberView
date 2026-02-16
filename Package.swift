@@ -1,0 +1,33 @@
+// swift-tools-version: 5.10
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "JNPhoneNumberView",
+    platforms: [
+        .iOS(.v12)
+    ],
+    products: [
+        // Products define the executables and libraries a package produces, making them visible to other packages.
+        .library(
+            name: "JNPhoneNumberView",
+            targets: ["JNPhoneNumberView"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/iziz/libPhoneNumber-iOS.git", from: "1.0.0"),
+    ]
+    ,
+    targets: [
+        // Targets are the basic building blocks of a package, defining a module or a test suite.
+        // Targets can depend on other targets in this package and products from dependencies.
+        .target(
+            name: "JNPhoneNumberView",
+            dependencies: [
+                .product(name: "libPhoneNumber", package: "libPhoneNumber-iOS")
+            ],
+            resources: [
+                .process("Resources"),
+            ])
+    ]
+)

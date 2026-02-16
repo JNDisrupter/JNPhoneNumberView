@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,10 +12,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		8697A0FF2F3B862E00AF7650 /* JNPhoneNumberView in Frameworks */ = {isa = PBXBuildFile; productRef = 8697A0FE2F3B862E00AF7650 /* JNPhoneNumberView */; };
+		86A1BC6C2F41ED2400FADF27 /* JNPhoneNumberView in Frameworks */ = {isa = PBXBuildFile; productRef = 86A1BC6B2F41ED2400FADF27 /* JNPhoneNumberView */; };
 		91E60483234F6A88005C0D34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E60482234F6A88005C0D34 /* MainViewController.swift */; };
 		91E60485234F6CD8005C0D34 /* JNPhoneNumberViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E60484234F6CD8005C0D34 /* JNPhoneNumberViewExample.swift */; };
 		91E60487234F6D2A005C0D34 /* JNCountryPickerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E60486234F6D2A005C0D34 /* JNCountryPickerExample.swift */; };
-		9BC21CE3D64F05F45AEBA32C /* Pods_JNPhoneNumberView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5901FA5494E3B101659119 /* Pods_JNPhoneNumberView_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		182DC8D3793B0F097BCE2248 /* Pods_JNPhoneNumberView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPhoneNumberView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		273CACDB46D1A1E7F68824D9 /* Pods-JNPhoneNumberView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.release.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.release.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JNPhoneNumberView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPhoneNumberView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,17 +39,11 @@
 		607FACE51AFB9204008FA782 /* JNPhoneNumberView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNPhoneNumberView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.debug.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		91E60482234F6A88005C0D34 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		91E60484234F6CD8005C0D34 /* JNPhoneNumberViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPhoneNumberViewExample.swift; sourceTree = "<group>"; };
 		91E60486234F6D2A005C0D34 /* JNCountryPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNCountryPickerExample.swift; sourceTree = "<group>"; };
 		91E60488234F8511005C0D34 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		91E60489234F8511005C0D34 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		AE62F1AD025C37992E646367 /* Pods-JNPhoneNumberView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPhoneNumberView_Example.debug.xcconfig"; path = "Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C32EEB52A76A2D843A529246 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		DD5901FA5494E3B101659119 /* Pods_JNPhoneNumberView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPhoneNumberView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8AD151A87D5AD7E815D6F9A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		FA9ED0A6CFBE279B8BCCFAFB /* JNPhoneNumberView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JNPhoneNumberView.podspec; path = ../JNPhoneNumberView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BC21CE3D64F05F45AEBA32C /* Pods_JNPhoneNumberView_Example.framework in Frameworks */,
+				8697A0FF2F3B862E00AF7650 /* JNPhoneNumberView in Frameworks */,
+				86A1BC6C2F41ED2400FADF27 /* JNPhoneNumberView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,25 +66,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		121009708E99783F46319E3E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */,
-				56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for JNPhoneNumberView */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				CD0D113101B66FEC355B8FEE /* Frameworks */,
-				E20CA582C5EC0BA9A6AEA156 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,38 +120,9 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				121009708E99783F46319E3E /* Pods */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				FA9ED0A6CFBE279B8BCCFAFB /* JNPhoneNumberView.podspec */,
-				F8AD151A87D5AD7E815D6F9A /* README.md */,
-				C32EEB52A76A2D843A529246 /* LICENSE */,
-			);
-			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		CD0D113101B66FEC355B8FEE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DD5901FA5494E3B101659119 /* Pods_JNPhoneNumberView_Example.framework */,
-				182DC8D3793B0F097BCE2248 /* Pods_JNPhoneNumberView_Tests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E20CA582C5EC0BA9A6AEA156 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AE62F1AD025C37992E646367 /* Pods-JNPhoneNumberView_Example.debug.xcconfig */,
-				273CACDB46D1A1E7F68824D9 /* Pods-JNPhoneNumberView_Example.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,11 +132,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "JNPhoneNumberView_Example" */;
 			buildPhases = (
-				03EF9E2D9BD03A41E66FF00B /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				95C01244F3DE2F634CBEA301 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +196,9 @@
 				ar,
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
+			packageReferences = (
+				86A1BC6A2F41ED2400FADF27 /* XCLocalSwiftPackageReference "../../JNPhoneNumberView" */,
+			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -276,51 +228,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		03EF9E2D9BD03A41E66FF00B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JNPhoneNumberView_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		95C01244F3DE2F634CBEA301 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JNPhoneNumberView/JNPhoneNumberView.framework",
-				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JNPhoneNumberView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JNPhoneNumberView_Example/Pods-JNPhoneNumberView_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607FACCC1AFB9204008FA782 /* Sources */ = {
@@ -474,21 +381,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67C3E39E16F2D03F99EA2E3D /* Pods-JNPhoneNumberView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "⁨⁨⁨⁨";
 				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,14 +408,16 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C0B69609C6E752B818F7BC /* Pods-JNPhoneNumberView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "⁨⁨⁨⁨";
 				DEVELOPMENT_TEAM = 243T5L9MQG;
 				INFOPLIST_FILE = JNPhoneNumberView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,7 +438,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -543,7 +459,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -582,6 +502,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		86A1BC6A2F41ED2400FADF27 /* XCLocalSwiftPackageReference "../../JNPhoneNumberView" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../JNPhoneNumberView;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8697A0FE2F3B862E00AF7650 /* JNPhoneNumberView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JNPhoneNumberView;
+		};
+		86A1BC6B2F41ED2400FADF27 /* JNPhoneNumberView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JNPhoneNumberView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }

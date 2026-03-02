@@ -18,7 +18,7 @@ JNPhoneNumberView support SwiftPM. To use SwiftPM, you should use Xcode 26 to op
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run the Example as a target
 
 ## JNPhoneNumberView
 
